@@ -1,0 +1,362 @@
+{
+"$schema": "https://json-schema.org/draft/2020-12/schema",
+"$id": "https://github.com/SamuraiWriter7/kazene-memory-breathing-protocol/schemas/multi-wing-memory-route.schema.json",
+"title": "Multi-Wing Memory Route",
+"description": "A multi-wing memory routing record for Kazene Memory Breathing Protocol, documenting how memory items move between specialized AI wings with memory weight, trace sensitivity, routing purpose, and human review boundaries.",
+"type": "object",
+"required": [
+"multi_wing_memory_route"
+],
+"additionalProperties": false,
+"properties": {
+"multi_wing_memory_route": {
+"type": "object",
+"required": [
+"id",
+"protocol_version",
+"source_wing",
+"destination_wing",
+"memory_item",
+"routing",
+"human_review",
+"result"
+],
+"additionalProperties": false,
+"properties": {
+"id": {
+"type": "string",
+"description": "Unique identifier for this multi-wing memory route.",
+"pattern": "^mwmr-[a-zA-Z0-9._:-]+$"
+},
+"protocol_version": {
+"type": "string",
+"description": "Protocol version used by this multi-wing memory route.",
+"examples": [
+"0.5.0-candidate"
+]
+},
+"source_wing": {
+"$ref": "#/$defs/wing_type"
+},
+"destination_wing": {
+"$ref": "#/$defs/wing_type"
+},
+"memory_item": {
+"type": "object",
+"description": "Memory item being routed between wings.",
+"required": [
+"type",
+"summary"
+],
+"additionalProperties": false,
+"properties": {
+"type": {
+"type": "string",
+"description": "Type of memory item being routed.",
+"enum": [
+"task_context",
+"project_state",
+"validation_failure_pattern",
+"schema_example_mismatch",
+"trace_compaction_result",
+"structural_rumination_result",
+"memory_weight_record",
+"forgetting_rule",
+"memory_retention_decision",
+"recurrence_rule",
+"validation_gate",
+"safety_boundary",
+"human_preference",
+"governance_boundary",
+"authorship_trace",
+"value_allocation_trace",
+"implicit_behavioral_influence",
+"archive_record"
+]
+},
+"summary": {
+"type": "string",
+"description": "Short summary of the memory item.",
+"minLength": 1
+},
+"source_ref": {
+"type": "string",
+"description": "Optional reference to a file, log, record, workflow run, document, or prior memory record."
+},
+"related_records": {
+"type": "array",
+"description": "Optional related protocol records.",
+"items": {
+"type": "string"
+},
+"uniqueItems": true
+}
+}
+},
+"routing": {
+"type": "object",
+"description": "Routing reason, memory weight, trace sensitivity, and allowed action.",
+"required": [
+"reason",
+"memory_weight",
+"trace_sensitivity",
+"allowed_action"
+],
+"additionalProperties": false,
+"properties": {
+"reason": {
+"type": "string",
+"description": "Reason this memory item is being routed between wings.",
+"minLength": 1
+},
+"memory_weight": {
+"$ref": "#/$defs/weight_level"
+},
+"trace_sensitivity": {
+"$ref": "#/$defs/trace_sensitivity"
+},
+"allowed_action": {
+"$ref": "#/$defs/wing_action"
+},
+"routing_purpose": {
+"type": "array",
+"description": "Purpose of this memory route.",
+"items": {
+"type": "string",
+"enum": [
+"task_execution",
+"planning",
+"research",
+"coding",
+"validation",
+"structural_rumination",
+"trace_compaction",
+"memory_weight_evaluation",
+"forgetting_decision",
+"retention_decision",
+"recurrence_prevention",
+"safety_review",
+"governance_review",
+"archive",
+"implicit_behavior_update",
+"human_review_escalation"
+]
+},
+"uniqueItems": true
+},
+"constraints": {
+"type": "array",
+"description": "Constraints that apply to this routing event.",
+"items": {
+"type": "string",
+"enum": [
+"do_not_expand_context_unnecessarily",
+"do_not_share_raw_trace_without_need",
+"do_not_rewrite_accountability",
+"do_not_rewrite_authorship_attribution",
+"do_not_discard_critical_trace",
+"preserve_source_reference",
+"preserve_human_review_boundary",
+"compress_before_routing",
+"route_only_for_declared_purpose",
+"return_to_human_on_boundary_violation"
+]
+},
+"uniqueItems": true
+}
+}
+},
+"human_review": {
+"type": "object",
+"description": "Human review requirement for this multi-wing memory route.",
+"required": [
+"required"
+],
+"additionalProperties": false,
+"properties": {
+"required": {
+"type": "boolean"
+},
+"required_for": {
+"type": "array",
+"description": "Reasons human review may be required.",
+"items": {
+"type": "string",
+"enum": [
+"high_impact_action",
+"value_judgment",
+"irreversible_decision",
+"safety_boundary_change",
+"identity_sensitive_decision",
+"financial_consequence",
+"legal_judgment",
+"political_interpretation",
+"military_interpretation",
+"external_system_action",
+"authorship_attribution",
+"value_allocation",
+"human_preference_change",
+"critical_memory_weight_change",
+"accountability_rewrite",
+"trace_loss_risk",
+"cross_agent_authority_escalation",
+"cross_wing_boundary_violation"
+]
+},
+"uniqueItems": true
+},
+"default_action": {
+"type": "string",
+"enum": [
+"pause_and_return_to_human",
+"request_confirmation",
+"block_routing",
+"block_automation",
+"create_review_record"
+],
+"default": "pause_and_return_to_human"
+}
+}
+},
+"result": {
+"type": "object",
+"description": "Result of this multi-wing memory routing event.",
+"required": [
+"status"
+],
+"additionalProperties": false,
+"properties": {
+"status": {
+"type": "string",
+"description": "Routing status.",
+"enum": [
+"routed",
+"blocked",
+"returned_to_human_review",
+"compressed_then_routed",
+"archived",
+"released",
+"pending_review"
+]
+},
+"creates": {
+"type": "array",
+"description": "Protocol structures created or expected as a result of this route.",
+"items": {
+"type": "string",
+"enum": [
+"structural_rumination_record",
+"trace_compaction_record",
+"memory_weight_record",
+"forgetting_rule",
+"memory_retention_decision",
+"recurrence_rule",
+"validation_gate",
+"safety_boundary",
+"human_review_record",
+"archive_record",
+"implicit_behavioral_influence"
+]
+},
+"uniqueItems": true
+},
+"destination_state": {
+"$ref": "#/$defs/memory_layer"
+},
+"notes": {
+"type": "array",
+"description": "Optional notes about routing result.",
+"items": {
+"type": "string"
+}
+}
+}
+},
+"notes": {
+"type": "array",
+"description": "Optional implementation or design notes.",
+"items": {
+"type": "string"
+}
+}
+}
+}
+},
+"$defs": {
+"wing_type": {
+"type": "string",
+"description": "Specialized AI wing participating in multi-wing memory routing.",
+"enum": [
+"human_interface_wing",
+"planning_wing",
+"research_wing",
+"coding_wing",
+"validation_wing",
+"structural_rumination_wing",
+"trace_compaction_wing",
+"memory_weight_wing",
+"forgetting_wing",
+"safety_review_wing",
+"governance_wing",
+"royalty_trace_wing",
+"implicit_breathing_wing",
+"archive_wing"
+]
+},
+"memory_layer": {
+"type": "string",
+"description": "Memory layer used by Kazene Memory Breathing Protocol.",
+"enum": [
+"short_term_memory",
+"working_memory",
+"long_term_memory",
+"implicit_breathing_layer",
+"archive",
+"released",
+"human_review"
+]
+},
+"weight_level": {
+"type": "string",
+"description": "Memory weight level.",
+"enum": [
+"low",
+"medium",
+"high",
+"critical"
+]
+},
+"trace_sensitivity": {
+"type": "string",
+"description": "Sensitivity of the trace or memory item being routed.",
+"enum": [
+"none",
+"low",
+"medium",
+"high",
+"critical"
+]
+},
+"wing_action": {
+"type": "string",
+"description": "Allowed action for the destination wing.",
+"enum": [
+"receive_only",
+"analyze",
+"summarize",
+"validate",
+"analyze_and_extract_recurrence_pattern",
+"compact_trace",
+"evaluate_memory_weight",
+"apply_forgetting_rule",
+"make_retention_decision",
+"create_validation_gate",
+"archive",
+"release",
+"move_to_implicit_layer",
+"escalate_to_human_review",
+"governance_review"
+]
+}
+}
+}
