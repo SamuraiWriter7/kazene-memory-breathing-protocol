@@ -968,4 +968,4 @@ This is the operating loop behind the protocol.
 Memory is not stored forever.
 Memory is routed, digested, compacted, weighted, released, retained, and breathed back into behavior.
 
-![Memory Cycle Diagram](docs/assets/memory-cycle-diagram.png)
+
