@@ -1,8 +1,8 @@
 # Kazene Memory Breathing Protocol
 
-## AI Memory Metabolism for Weighted Memory, Forgetting, Trace Compaction, and Implicit Breathing Layers
+## AI Memory Metabolism for Weighted Memory, Forgetting, Trace Compaction, and Multi-Wing Memory Circulation
 
-**Version:** v0.4.0-candidate
+**Version:** v0.5.0-candidate
 **Status:** Candidate
 **Repository:** `kazene-memory-breathing-protocol`
 
@@ -24,6 +24,8 @@ It defines how AI systems should decide:
 * what to downgrade or promote,
 * what failure patterns to preserve,
 * what traces to compact,
+* what memory may move across AI wings,
+* what memory must stay local,
 * and what to return to human review.
 
 The goal is not to make AI remember everything.
@@ -34,6 +36,7 @@ The goal is to make AI remember less, but better.
 From accumulation to circulation.
 From storage to metabolism.
 From memory overload to memory breathing.
+From single-agent memory to multi-wing memory circulation.
 ```
 
 ---
@@ -52,6 +55,8 @@ Without memory breathing, AI systems may accumulate:
 * unclear responsibility boundaries,
 * low-value memory residue,
 * unprocessed failure traces,
+* uncontrolled cross-agent context,
+* role confusion between AI agents,
 * and excessive cognitive burden for humans.
 
 Kazene Memory Breathing Protocol introduces:
@@ -62,6 +67,8 @@ Kazene Memory Breathing Protocol introduces:
 * memory weight records,
 * structural rumination records,
 * trace compaction records,
+* multi-wing memory routes,
+* memory wing boundaries,
 * implicit behavioral influence,
 * and human review boundaries.
 
@@ -74,12 +81,14 @@ Do not read everything.
 Do not remember everything.
 Do not reason over everything.
 Do not output everything.
+Do not share every memory across every agent.
 
 Remember what must guide future action.
 Weight memory by future value.
 Compress repeated patterns.
 Release one-time noise.
 Transform failure into reusable structure.
+Route memory only with purpose.
 Return value judgment to human review.
 ```
 
@@ -307,7 +316,7 @@ preserve / return_to_human_review / create_review_record
 
 ## Structural Rumination / Trace Compaction Integration
 
-`v0.4.0-candidate` adds **Structural Rumination / Trace Compaction Integration**.
+`v0.4.0-candidate` added **Structural Rumination / Trace Compaction Integration**.
 
 This layer defines how AI systems process failures, validation errors, schema-example mismatches, workflow breakdowns, and debugging traces into reusable memory structures.
 
@@ -376,22 +385,122 @@ Trace compaction may transform raw logs into:
 
 ---
 
-## Trace Compaction
+## Multi-Wing Memory Wing Integration
 
-Trace Compaction transforms raw logs into reusable structure.
+`v0.5.0-candidate` adds **Multi-Wing Memory Wing Integration**.
 
-Example:
+This layer extends memory breathing from a single AI system into a multi-agent, multi-role, and multi-wing memory circulation model.
+
+A multi-wing AI system should not behave as one giant shared memory blob.
+
+Each wing should have:
+
+* role-specific memory,
+* allowed inputs,
+* allowed outputs,
+* routing permissions,
+* forgetting permissions,
+* prohibited actions,
+* human review triggers,
+* and boundary behavior.
 
 ```text
-raw validation failure
-  → recurrence rule
-  → validation gate
-  → safety boundary
+single memory store
+  → uncontrolled accumulation
+
+multi-wing memory breathing
+  → role-specific memory circulation
+  → weighted routing
+  → trace-aware transfer
+  → human-reviewed boundary
 ```
 
-The goal is not to preserve every log line.
+---
 
-The goal is to preserve future prevention value while reducing active memory load.
+## Multi-Wing Memory Route
+
+A multi-wing memory route records how a memory item moves between specialized AI wings.
+
+It captures:
+
+* source wing,
+* destination wing,
+* memory item,
+* routing reason,
+* memory weight,
+* trace sensitivity,
+* allowed action,
+* routing purpose,
+* constraints,
+* human review requirement,
+* and routing result.
+
+Example flow:
+
+```text
+validation_wing
+  → structural_rumination_wing
+  → trace_compaction_wing
+  → memory_weight_wing
+  → forgetting_wing
+  → long_term_memory / human_review
+```
+
+This prevents memory from spreading across agents without purpose.
+
+---
+
+## Memory Wing Boundary
+
+A memory wing boundary defines what a specialized AI wing may and may not do.
+
+It defines:
+
+* wing role,
+* allowed inputs,
+* allowed outputs,
+* routing permissions,
+* forgetting permissions,
+* prohibited actions,
+* human review triggers,
+* default boundary action,
+* and memory scope.
+
+A memory wing is not a total authority.
+
+It is a bounded role.
+
+```text
+Each wing should remember what it needs,
+forget what it should release,
+route only with declared purpose,
+and return high-impact boundary cases to humans.
+```
+
+---
+
+## Memory Circulation, Not Memory Centralization
+
+Kazene Memory Breathing Protocol rejects uncontrolled universal shared memory.
+
+Instead, it prefers:
+
+```text
+bounded memory
+  → weighted transfer
+  → trace-aware circulation
+  → human-reviewed escalation
+```
+
+This reduces:
+
+* token load,
+* stale context propagation,
+* cross-agent confusion,
+* duplicated reasoning,
+* unnecessary retention,
+* unsafe memory authority,
+* and hidden accountability drift.
 
 ---
 
@@ -413,6 +522,9 @@ Human review is required when memory affects:
 * financial consequences,
 * accountability rewrites,
 * trace loss risk,
+* cross-agent authority escalation,
+* cross-wing boundary violation,
+* irreversible deletion,
 * or external system actions.
 
 Memory may guide.
@@ -462,7 +574,7 @@ It must not become unchecked authority.
 
 ### v0.4.0-candidate — Structural Rumination / Trace Compaction Integration
 
-`v0.4.0-candidate` adds failure-to-structure metabolism:
+`v0.4.0-candidate` added failure-to-structure metabolism:
 
 * structural rumination record schema,
 * trace compaction record schema,
@@ -475,6 +587,22 @@ It must not become unchecked authority.
 * validation integration,
 * and human review boundary expansion.
 
+### v0.5.0-candidate — Multi-Wing Memory Wing Integration
+
+`v0.5.0-candidate` adds multi-wing memory circulation:
+
+* multi-wing memory route schema,
+* memory wing boundary schema,
+* multi-wing memory route example,
+* memory wing boundary example,
+* wing-specific memory routing,
+* role-based memory boundaries,
+* routing permissions,
+* forgetting permissions,
+* prohibited wing actions,
+* cross-wing human review triggers,
+* and validation integration.
+
 ---
 
 ## Repository Structure
@@ -485,6 +613,7 @@ docs/
   executable-forgetting-rules.md
   memory-weight-architecture-integration.md
   structural-rumination-trace-compaction-integration.md
+  multi-wing-memory-wing-integration.md
 
 schemas/
   memory-breathing-record.schema.json
@@ -493,6 +622,8 @@ schemas/
   memory-weight-record.schema.json
   structural-rumination-record.schema.json
   trace-compaction-record.schema.json
+  multi-wing-memory-route.schema.json
+  memory-wing-boundary.schema.json
 
 examples/
   memory-breathing-record.example.yaml
@@ -501,6 +632,8 @@ examples/
   memory-weight-record.example.yaml
   structural-rumination-record.example.yaml
   trace-compaction-record.example.yaml
+  multi-wing-memory-route.example.yaml
+  memory-wing-boundary.example.yaml
 
 scripts/
   validate_examples.py
@@ -523,6 +656,8 @@ schemas/memory-retention-decision.schema.json
 schemas/memory-weight-record.schema.json
 schemas/structural-rumination-record.schema.json
 schemas/trace-compaction-record.schema.json
+schemas/multi-wing-memory-route.schema.json
+schemas/memory-wing-boundary.schema.json
 ```
 
 These define:
@@ -533,12 +668,16 @@ These define:
 * memory weight records,
 * structural rumination records,
 * trace compaction records,
+* multi-wing memory routes,
+* memory wing boundaries,
 * memory layers,
 * forgetting actions,
 * retention priorities,
 * review cycles,
 * trace compaction outcomes,
 * recurrence prevention outputs,
+* wing routing permissions,
+* wing boundary conditions,
 * and human review boundaries.
 
 ---
@@ -554,6 +693,8 @@ examples/memory-retention-decision.example.yaml
 examples/memory-weight-record.example.yaml
 examples/structural-rumination-record.example.yaml
 examples/trace-compaction-record.example.yaml
+examples/multi-wing-memory-route.example.yaml
+examples/memory-wing-boundary.example.yaml
 ```
 
 These demonstrate:
@@ -563,7 +704,9 @@ These demonstrate:
 * a memory retention decision that preserves useful prevention patterns while releasing unnecessary raw logs,
 * a memory weight record that assigns high weight to recurring YAML hierarchy failure patterns,
 * a structural rumination record that analyzes a YAML hierarchy failure,
-* and a trace compaction record that preserves reusable failure structure while releasing debugging noise.
+* a trace compaction record that preserves reusable failure structure while releasing debugging noise,
+* a multi-wing memory route from validation wing to structural rumination wing,
+* and a memory wing boundary for trace compaction.
 
 ---
 
@@ -607,6 +750,8 @@ Memory Retention Decision
 Memory Weight Record
 Structural Rumination Record
 Trace Compaction Record
+Multi-Wing Memory Route
+Memory Wing Boundary
 ```
 
 ---
@@ -631,6 +776,11 @@ Rumination is structural digestion.
 
 Compaction is not erasure.
 Compaction is transformation.
+
+A wing is not a hidden authority.
+It is a bounded role.
+
+Memory should circulate, not centralize.
 
 Implicit behavior is not hidden control.
 It is compressed alignment posture.
@@ -658,6 +808,21 @@ raw failure
   → memory weighting
   → trace compaction
   → forgetting or retention
+  → multi-wing routing
+```
+
+### Multi-Wing Architecture
+
+Multi-Wing Architecture defines specialized AI roles.
+
+Kazene Memory Breathing Protocol provides the memory circulation layer for those roles:
+
+```text
+wing role
+  → memory boundary
+  → routing permission
+  → forgetting permission
+  → human review trigger
 ```
 
 ### Mythos Tuning Layer
@@ -671,7 +836,8 @@ Memory breathing provides:
 * reduced redundant reasoning,
 * safer action boundaries,
 * weight-based memory routing,
-* and failure-to-structure transformation.
+* failure-to-structure transformation,
+* and multi-wing memory circulation.
 
 ### Royalty OS / Trace Layer
 
@@ -684,6 +850,7 @@ Kazene Memory Breathing Protocol helps decide:
 * what attribution records must remain durable,
 * what memory requires critical weight,
 * what compaction would risk trace loss,
+* what cross-wing routing requires review,
 * and what should not be forgotten because it affects value return.
 
 ### AI Breathing Efficiency Standard
@@ -696,6 +863,7 @@ Kazene Memory Breathing Protocol reduces the amount of memory and context that m
 less memory noise
   → weighted memory routing
   → trace compaction
+  → multi-wing memory boundaries
   → less context load
   → fewer tokens
   → shorter reasoning
@@ -707,29 +875,29 @@ less memory noise
 
 ## Future Roadmap
 
-### v0.5 — Multi-Wing Memory Wing Integration
+### v0.6 — Memory Permission / Proof Layer
 
-Planned direction:
+Possible future direction:
 
-* distributed memory breathing,
-* shared memory boundaries,
-* agent-to-agent trace compaction,
-* cross-agent forgetting governance,
-* Multi-Wing Memory Wing definition,
-* memory circulation across AI agent roles,
-* and human review boundaries for multi-agent memory systems.
+* memory access permission records,
+* cross-wing memory consent,
+* trace-preservation proofs,
+* memory deletion proofs,
+* attribution-safe compaction,
+* cryptographic or signed memory events,
+* and stronger governance boundaries for distributed AI memory systems.
 
 ---
 
 ## Current Status
 
-`v0.4.0-candidate` establishes Structural Rumination / Trace Compaction Integration as the fourth core layer of Kazene Memory Breathing Protocol.
+`v0.5.0-candidate` establishes Multi-Wing Memory Wing Integration as the fifth core layer of Kazene Memory Breathing Protocol.
 
 The protocol now has:
 
 * documentation,
-* six JSON Schemas,
-* six YAML examples,
+* eight JSON Schemas,
+* eight YAML examples,
 * a validation script,
 * and GitHub Actions validation.
 
@@ -747,11 +915,10 @@ Kazene Memory Breathing Protocol helps AI systems:
 * preserve important patterns,
 * reduce cognitive and computational load,
 * convert failures into reusable prevention structures,
+* circulate memory across specialized AI wings,
 * and keep high-impact decisions within human review boundaries.
 
 The goal is not to build an AI that remembers everything.
 
-The goal is to build an AI that breathes, forgets, weighs, ruminates, compacts, and metabolizes memory safely.
-
-
+The goal is to build an AI that breathes, forgets, weighs, ruminates, compacts, routes, and metabolizes memory safely.
 
