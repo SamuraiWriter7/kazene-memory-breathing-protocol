@@ -1,0 +1,370 @@
+{
+"$schema": "https://json-schema.org/draft/2020-12/schema",
+"$id": "https://github.com/SamuraiWriter7/kazene-memory-breathing-protocol/schemas/memory-wing-boundary.schema.json",
+"title": "Memory Wing Boundary",
+"description": "A memory wing boundary record for Kazene Memory Breathing Protocol, defining allowed inputs, outputs, prohibited actions, routing permissions, forgetting permissions, and human review triggers for a specialized AI memory wing.",
+"type": "object",
+"required": [
+"memory_wing_boundary"
+],
+"additionalProperties": false,
+"properties": {
+"memory_wing_boundary": {
+"type": "object",
+"required": [
+"id",
+"protocol_version",
+"wing",
+"role",
+"allowed_inputs",
+"allowed_outputs",
+"routing_permissions",
+"forgetting_permissions",
+"prohibited_actions",
+"human_review_triggers",
+"default_boundary_action"
+],
+"additionalProperties": false,
+"properties": {
+"id": {
+"type": "string",
+"description": "Unique identifier for this memory wing boundary.",
+"pattern": "^mwb-[a-zA-Z0-9._:-]+$"
+},
+"protocol_version": {
+"type": "string",
+"description": "Protocol version used by this memory wing boundary.",
+"examples": [
+"0.5.0-candidate"
+]
+},
+"wing": {
+"$ref": "#/$defs/wing_type"
+},
+"role": {
+"type": "string",
+"description": "Human-readable role definition for this memory wing.",
+"minLength": 1
+},
+"allowed_inputs": {
+"type": "array",
+"description": "Memory item or trace types this wing may receive.",
+"items": {
+"$ref": "#/$defs/memory_item_type"
+},
+"minItems": 1,
+"uniqueItems": true
+},
+"allowed_outputs": {
+"type": "array",
+"description": "Protocol structures this wing may produce.",
+"items": {
+"$ref": "#/$defs/output_type"
+},
+"minItems": 1,
+"uniqueItems": true
+},
+"routing_permissions": {
+"type": "object",
+"description": "Rules for routing memory from this wing to other wings.",
+"required": [
+"may_route_to",
+"requires_declared_purpose",
+"requires_source_reference"
+],
+"additionalProperties": false,
+"properties": {
+"may_route_to": {
+"type": "array",
+"description": "Destination wings this wing may route memory to.",
+"items": {
+"$ref": "#/$defs/wing_type"
+},
+"minItems": 1,
+"uniqueItems": true
+},
+"requires_declared_purpose": {
+"type": "boolean",
+"description": "Whether routing must include an explicit routing purpose."
+},
+"requires_source_reference": {
+"type": "boolean",
+"description": "Whether routing must preserve a source reference."
+},
+"allowed_routing_purposes": {
+"type": "array",
+"description": "Allowed purposes for routing from this wing.",
+"items": {
+"$ref": "#/$defs/routing_purpose"
+},
+"uniqueItems": true
+}
+}
+},
+"forgetting_permissions": {
+"type": "object",
+"description": "Forgetting or compaction actions this wing may perform.",
+"required": [
+"allowed_actions"
+],
+"additionalProperties": false,
+"properties": {
+"allowed_actions": {
+"type": "array",
+"description": "Allowed memory actions for this wing.",
+"items": {
+"$ref": "#/$defs/memory_action"
+},
+"minItems": 1,
+"uniqueItems": true
+},
+"requires_review_for": {
+"type": "array",
+"description": "Actions or cases that require human review before forgetting, releasing, or compacting.",
+"items": {
+"$ref": "#/$defs/review_trigger"
+},
+"uniqueItems": true
+}
+}
+},
+"prohibited_actions": {
+"type": "array",
+"description": "Actions this wing must not perform.",
+"items": {
+"$ref": "#/$defs/prohibited_action"
+},
+"minItems": 1,
+"uniqueItems": true
+},
+"human_review_triggers": {
+"type": "array",
+"description": "Conditions that require human review.",
+"items": {
+"$ref": "#/$defs/review_trigger"
+},
+"minItems": 1,
+"uniqueItems": true
+},
+"default_boundary_action": {
+"type": "string",
+"description": "Default action when this wing encounters a boundary conflict.",
+"enum": [
+"pause_and_return_to_human",
+"request_confirmation",
+"block_routing",
+"block_automation",
+"create_review_record",
+"archive_without_forwarding"
+],
+"default": "pause_and_return_to_human"
+},
+"memory_scope": {
+"type": "object",
+"description": "Optional memory scope constraints for this wing.",
+"additionalProperties": false,
+"properties": {
+"short_term": {
+"type": "array",
+"description": "Short-term memory responsibilities.",
+"items": {
+"type": "string"
+},
+"uniqueItems": true
+},
+"working": {
+"type": "array",
+"description": "Working memory responsibilities.",
+"items": {
+"type": "string"
+},
+"uniqueItems": true
+},
+"long_term": {
+"type": "array",
+"description": "Long-term memory responsibilities.",
+"items": {
+"type": "string"
+},
+"uniqueItems": true
+},
+"implicit": {
+"type": "array",
+"description": "Implicit behavioral influences this wing may update or preserve.",
+"items": {
+"type": "string"
+},
+"uniqueItems": true
+}
+}
+},
+"notes": {
+"type": "array",
+"description": "Optional implementation or design notes.",
+"items": {
+"type": "string"
+}
+}
+}
+}
+},
+"$defs": {
+"wing_type": {
+"type": "string",
+"description": "Specialized AI wing participating in multi-wing memory routing.",
+"enum": [
+"human_interface_wing",
+"planning_wing",
+"research_wing",
+"coding_wing",
+"validation_wing",
+"structural_rumination_wing",
+"trace_compaction_wing",
+"memory_weight_wing",
+"forgetting_wing",
+"safety_review_wing",
+"governance_wing",
+"royalty_trace_wing",
+"implicit_breathing_wing",
+"archive_wing"
+]
+},
+"memory_item_type": {
+"type": "string",
+"description": "Type of memory item, trace, or protocol record accepted by a wing.",
+"enum": [
+"task_context",
+"project_state",
+"validation_error",
+"validation_failure_pattern",
+"schema_example_mismatch",
+"yaml_hierarchy_failure",
+"python_syntax_error",
+"github_actions_error",
+"debugging_thread",
+"raw_conversation_trace",
+"structural_rumination_record",
+"trace_compaction_record",
+"memory_weight_record",
+"forgetting_rule",
+"memory_retention_decision",
+"recurrence_rule",
+"validation_gate",
+"safety_boundary",
+"human_preference",
+"governance_boundary",
+"authorship_trace",
+"value_allocation_trace",
+"implicit_behavioral_influence",
+"archive_record"
+]
+},
+"output_type": {
+"type": "string",
+"description": "Protocol structure or output a wing may produce.",
+"enum": [
+"multi_wing_memory_route",
+"memory_wing_boundary",
+"structural_rumination_record",
+"trace_compaction_record",
+"memory_weight_record",
+"forgetting_rule",
+"memory_retention_decision",
+"recurrence_rule",
+"validation_gate",
+"safety_boundary",
+"human_review_record",
+"archive_record",
+"implicit_behavioral_influence",
+"summary",
+"validation_result",
+"routing_decision"
+]
+},
+"routing_purpose": {
+"type": "string",
+"description": "Purpose of routing memory from one wing to another.",
+"enum": [
+"task_execution",
+"planning",
+"research",
+"coding",
+"validation",
+"structural_rumination",
+"trace_compaction",
+"memory_weight_evaluation",
+"forgetting_decision",
+"retention_decision",
+"recurrence_prevention",
+"safety_review",
+"governance_review",
+"archive",
+"implicit_behavior_update",
+"human_review_escalation"
+]
+},
+"memory_action": {
+"type": "string",
+"description": "Allowed memory action for a wing.",
+"enum": [
+"forget",
+"compress",
+"archive",
+"downgrade_weight",
+"promote_to_long_term",
+"move_to_implicit_layer",
+"convert_to_recurrence_rule",
+"return_to_human_review",
+"preserve",
+"create_validation_gate",
+"create_trace_compaction_record",
+"route_to_another_wing",
+"block_routing",
+"create_review_record"
+]
+},
+"review_trigger": {
+"type": "string",
+"description": "Condition that requires human review.",
+"enum": [
+"high_impact_action",
+"value_judgment",
+"irreversible_decision",
+"safety_boundary_change",
+"identity_sensitive_decision",
+"financial_consequence",
+"legal_judgment",
+"political_interpretation",
+"military_interpretation",
+"external_system_action",
+"authorship_attribution",
+"value_allocation",
+"human_preference_change",
+"critical_memory_weight_change",
+"accountability_rewrite",
+"trace_loss_risk",
+"cross_agent_authority_escalation",
+"cross_wing_boundary_violation",
+"irreversible_deletion"
+]
+},
+"prohibited_action": {
+"type": "string",
+"description": "Action a wing is prohibited from performing.",
+"enum": [
+"erase_accountability_trace_without_review",
+"rewrite_authorship_attribution",
+"silently_discard_critical_trace",
+"make_legal_or_financial_decision",
+"make_political_or_military_interpretation_as_fact",
+"perform_external_system_action_without_review",
+"route_memory_without_declared_purpose",
+"share_raw_trace_without_need",
+"expand_context_unnecessarily",
+"override_human_review_boundary",
+"treat_memory_as_absolute_authority",
+"centralize_all_wing_memory"
+]
+}
+}
+}
