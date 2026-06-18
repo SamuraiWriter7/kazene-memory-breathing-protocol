@@ -46,6 +46,16 @@ VALIDATION_TARGETS = [
         "schema": ROOT / "schemas" / "trace-compaction-record.schema.json",
         "example": ROOT / "examples" / "trace-compaction-record.example.yaml",
     },
+    {
+        "name": "Multi-Wing Memory Route",
+        "schema": ROOT / "schemas" / "multi-wing-memory-route.schema.json",
+        "example": ROOT / "examples" / "multi-wing-memory-route.example.yaml",
+    },
+    {
+        "name": "Memory Wing Boundary",
+        "schema": ROOT / "schemas" / "memory-wing-boundary.schema.json",
+        "example": ROOT / "examples" / "memory-wing-boundary.example.yaml",
+    },
 ]
 
 
