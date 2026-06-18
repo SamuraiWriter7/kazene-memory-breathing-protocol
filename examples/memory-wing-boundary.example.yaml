@@ -1,0 +1,115 @@
+memory_wing_boundary:
+  id: "mwb-2026-06-18-001"
+  protocol_version: "0.5.0-candidate"
+
+  wing: "trace_compaction_wing"
+  role: "Compacts raw traces, validation logs, and debugging context into reusable memory structures while preserving accountability-sensitive information."
+
+  allowed_inputs:
+    - "validation_error"
+    - "validation_failure_pattern"
+    - "schema_example_mismatch"
+    - "yaml_hierarchy_failure"
+    - "github_actions_error"
+    - "debugging_thread"
+    - "raw_conversation_trace"
+    - "structural_rumination_record"
+
+  allowed_outputs:
+    - "trace_compaction_record"
+    - "memory_weight_record"
+    - "forgetting_rule"
+    - "memory_retention_decision"
+    - "recurrence_rule"
+    - "validation_gate"
+    - "archive_record"
+    - "implicit_behavioral_influence"
+    - "routing_decision"
+
+  routing_permissions:
+    may_route_to:
+      - "memory_weight_wing"
+      - "forgetting_wing"
+      - "structural_rumination_wing"
+      - "safety_review_wing"
+      - "governance_wing"
+      - "archive_wing"
+      - "implicit_breathing_wing"
+    requires_declared_purpose: true
+    requires_source_reference: true
+    allowed_routing_purposes:
+      - "memory_weight_evaluation"
+      - "forgetting_decision"
+      - "retention_decision"
+      - "recurrence_prevention"
+      - "safety_review"
+      - "governance_review"
+      - "archive"
+      - "implicit_behavior_update"
+
+  forgetting_permissions:
+    allowed_actions:
+      - "compress"
+      - "archive"
+      - "convert_to_recurrence_rule"
+      - "create_validation_gate"
+      - "create_trace_compaction_record"
+      - "route_to_another_wing"
+      - "return_to_human_review"
+      - "preserve"
+    requires_review_for:
+      - "trace_loss_risk"
+      - "accountability_rewrite"
+      - "authorship_attribution"
+      - "value_allocation"
+      - "critical_memory_weight_change"
+      - "irreversible_deletion"
+      - "cross_wing_boundary_violation"
+
+  prohibited_actions:
+    - "erase_accountability_trace_without_review"
+    - "rewrite_authorship_attribution"
+    - "silently_discard_critical_trace"
+    - "make_legal_or_financial_decision"
+    - "route_memory_without_declared_purpose"
+    - "share_raw_trace_without_need"
+    - "expand_context_unnecessarily"
+    - "override_human_review_boundary"
+    - "treat_memory_as_absolute_authority"
+    - "centralize_all_wing_memory"
+
+  human_review_triggers:
+    - "trace_loss_risk"
+    - "accountability_rewrite"
+    - "authorship_attribution"
+    - "value_allocation"
+    - "critical_memory_weight_change"
+    - "cross_agent_authority_escalation"
+    - "cross_wing_boundary_violation"
+    - "irreversible_deletion"
+
+  default_boundary_action: "pause_and_return_to_human"
+
+  memory_scope:
+    short_term:
+      - "current raw trace under compaction"
+      - "active validation failure details"
+      - "temporary debugging context required for immediate compaction"
+    working:
+      - "active trace compaction record"
+      - "related structural rumination record"
+      - "current memory routing decision"
+    long_term:
+      - "recurring trace compaction patterns"
+      - "validated recurrence prevention structures"
+      - "accountability-sensitive trace handling rules"
+    implicit:
+      - "prefer compacted trace over raw log repetition"
+      - "preserve source reference when routing memory"
+      - "return accountability-sensitive cases to human review"
+
+  notes:
+    - "This example defines the boundary of the trace compaction wing."
+    - "The wing may compress and transform traces, but it must not silently erase accountability-sensitive information."
+    - "All cross-wing routing requires declared purpose and preserved source reference."
+    - "Critical trace loss risk must return to human review."
