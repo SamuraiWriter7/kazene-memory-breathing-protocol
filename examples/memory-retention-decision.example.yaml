@@ -1,0 +1,44 @@
+memory_retention_decision:
+id: "mrd-2026-06-18-001"
+protocol_version: "0.2.0-candidate"
+source_rule: "forget-rule-2026-06-18-001"
+
+evaluated_memory:
+type: "validation_error"
+summary: "GitHub Actions validation failure caused by workflow hierarchy mismatch and schema-example drift"
+source_layer: "working_memory"
+source_ref: "github-actions-validation-log"
+
+decision:
+action: "convert_to_recurrence_rule"
+destination_layer: "long_term_memory"
+reason:
+- "The failure pattern is likely to recur during future schema and workflow edits."
+- "The raw CI traceback is no longer needed after validation has passed."
+- "The useful memory is the prevention rule, not the full troubleshooting log."
+- "Preserving the recurrence pattern reduces future cognitive and computational load."
+created_records:
+- "recurrence_rule"
+- "validation_gate"
+- "safety_boundary"
+
+preserved:
+- "GitHub Actions steps must be nested under jobs.<job_id>."
+- "Schema and example files must evolve together."
+- "Python dunder identifiers must be preserved when copying code from Markdown."
+- "Required schema fields must be compared against example YAML before release."
+
+released:
+- "full CI traceback"
+- "temporary troubleshooting comments"
+- "duplicate validation error messages"
+- "resolved intermediate debugging context"
+
+human_review:
+required: false
+default_action: "pause_and_return_to_human"
+
+notes:
+- "This retention decision shows the outcome of applying an executable forgetting rule."
+- "The raw validation failure is released from active memory after being converted into reusable recurrence patterns."
+- "The retained structure supports future release validation without preserving unnecessary log volume."
