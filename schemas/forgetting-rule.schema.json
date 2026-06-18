@@ -1,0 +1,323 @@
+{
+"$schema": "https://json-schema.org/draft/2020-12/schema",
+"$id": "https://github.com/SamuraiWriter7/kazene-memory-breathing-protocol/schemas/forgetting-rule.schema.json",
+"title": "Executable Forgetting Rule",
+"description": "An executable forgetting rule for AI memory metabolism, defining when to forget, compress, archive, downgrade, promote, move to implicit layers, convert to recurrence rules, or return memory items to human review.",
+"type": "object",
+"required": [
+"forgetting_rule"
+],
+"additionalProperties": false,
+"properties": {
+"forgetting_rule": {
+"type": "object",
+"required": [
+"id",
+"protocol_version",
+"name",
+"trigger",
+"target",
+"evaluation",
+"action",
+"preserve",
+"release",
+"human_review"
+],
+"additionalProperties": false,
+"properties": {
+"id": {
+"type": "string",
+"description": "Unique identifier for this forgetting rule.",
+"pattern": "^forget-rule-[a-zA-Z0-9._:-]+$"
+},
+"protocol_version": {
+"type": "string",
+"description": "Protocol version used by this forgetting rule.",
+"examples": [
+"0.2.0-candidate"
+]
+},
+"name": {
+"type": "string",
+"description": "Human-readable name of the forgetting rule.",
+"minLength": 1
+},
+"trigger": {
+"type": "object",
+"description": "Condition under which this forgetting rule should be evaluated.",
+"required": [
+"event",
+"conditions"
+],
+"additionalProperties": false,
+"properties": {
+"event": {
+"type": "string",
+"description": "Event that triggers rule evaluation.",
+"enum": [
+"task_completed",
+"validation_error_resolved",
+"release_completed",
+"context_expired",
+"memory_review_cycle",
+"schema_updated",
+"example_updated",
+"human_request",
+"agent_session_closed",
+"trace_compaction_needed"
+]
+},
+"conditions": {
+"type": "array",
+"description": "Conditions that must be true before applying this rule.",
+"items": {
+"type": "string"
+},
+"minItems": 1,
+"uniqueItems": true
+}
+}
+},
+"target": {
+"type": "object",
+"description": "Memory target evaluated by this forgetting rule.",
+"required": [
+"memory_type",
+"description",
+"current_layer"
+],
+"additionalProperties": false,
+"properties": {
+"memory_type": {
+"type": "string",
+"description": "Type of memory item being evaluated.",
+"enum": [
+"raw_trace",
+"conversation_context",
+"validation_error",
+"implementation_note",
+"obsolete_assumption",
+"resolved_thread",
+"human_preference",
+"project_state",
+"schema_example_mismatch",
+"recurring_error_pattern",
+"behavioral_tendency",
+"attribution_trace",
+"safety_boundary"
+]
+},
+"description": {
+"type": "string",
+"description": "Short description of the memory item.",
+"minLength": 1
+},
+"current_layer": {
+"$ref": "#/$defs/memory_layer"
+},
+"source_ref": {
+"type": "string",
+"description": "Optional reference to a file, trace, issue, log, or document."
+}
+}
+},
+"evaluation": {
+"type": "object",
+"description": "Evaluation criteria used to decide the forgetting action.",
+"required": [
+"relevance",
+"recurrence",
+"safety_impact",
+"future_action_value"
+],
+"additionalProperties": false,
+"properties": {
+"relevance": {
+"$ref": "#/$defs/impact_level"
+},
+"recurrence": {
+"type": "string",
+"description": "Likelihood that this memory pattern will recur.",
+"enum": [
+"none",
+"low",
+"medium",
+"high",
+"systemic"
+]
+},
+"safety_impact": {
+"$ref": "#/$defs/impact_level"
+},
+"future_action_value": {
+"$ref": "#/$defs/impact_level"
+},
+"human_sensitivity": {
+"type": "string",
+"description": "Degree to which this memory involves sensitive human, legal, political, financial, medical, identity, or safety judgment.",
+"enum": [
+"none",
+"low",
+"medium",
+"high",
+"critical"
+]
+},
+"rationale": {
+"type": "array",
+"description": "Optional rationale explaining the evaluation.",
+"items": {
+"type": "string"
+}
+}
+}
+},
+"action": {
+"type": "object",
+"description": "Executable forgetting action to apply.",
+"required": [
+"type",
+"resulting_layer"
+],
+"additionalProperties": false,
+"properties": {
+"type": {
+"$ref": "#/$defs/forgetting_action"
+},
+"resulting_layer": {
+"$ref": "#/$defs/memory_layer"
+},
+"creates": {
+"type": "array",
+"description": "Optional reusable structures created by this action.",
+"items": {
+"type": "string",
+"enum": [
+"recurrence_rule",
+"validation_gate",
+"safety_boundary",
+"memory_weight_record",
+"retention_decision",
+"implicit_behavioral_influence",
+"archive_record",
+"human_review_record"
+]
+},
+"uniqueItems": true
+}
+}
+},
+"preserve": {
+"type": "array",
+"description": "Memory elements that must be preserved after the forgetting action.",
+"items": {
+"type": "string"
+},
+"minItems": 1,
+"uniqueItems": true
+},
+"release": {
+"type": "array",
+"description": "Memory elements that may be released, discarded, compressed, or removed from active context.",
+"items": {
+"type": "string"
+},
+"minItems": 1,
+"uniqueItems": true
+},
+"human_review": {
+"type": "object",
+"description": "Human review requirement for this forgetting rule.",
+"required": [
+"required"
+],
+"additionalProperties": false,
+"properties": {
+"required": {
+"type": "boolean"
+},
+"required_for": {
+"type": "array",
+"description": "Reasons human review may be required.",
+"items": {
+"type": "string",
+"enum": [
+"high_impact_action",
+"value_judgment",
+"irreversible_decision",
+"safety_boundary_change",
+"identity_sensitive_decision",
+"financial_consequence",
+"legal_judgment",
+"political_interpretation",
+"military_interpretation",
+"external_system_action",
+"authorship_attribution",
+"value_allocation",
+"human_preference_change"
+]
+},
+"uniqueItems": true
+},
+"default_action": {
+"type": "string",
+"enum": [
+"pause_and_return_to_human",
+"request_confirmation",
+"block_automation",
+"create_review_record"
+],
+"default": "pause_and_return_to_human"
+}
+}
+},
+"notes": {
+"type": "array",
+"description": "Optional implementation or design notes.",
+"items": {
+"type": "string"
+}
+}
+}
+}
+},
+"$defs": {
+"memory_layer": {
+"type": "string",
+"description": "Memory layer used by Kazene Memory Breathing Protocol.",
+"enum": [
+"short_term_memory",
+"working_memory",
+"long_term_memory",
+"implicit_breathing_layer",
+"archive",
+"released",
+"human_review"
+]
+},
+"impact_level": {
+"type": "string",
+"description": "General impact or importance level.",
+"enum": [
+"low",
+"medium",
+"high",
+"critical"
+]
+},
+"forgetting_action": {
+"type": "string",
+"description": "Executable forgetting action.",
+"enum": [
+"forget",
+"compress",
+"archive",
+"downgrade_weight",
+"promote_to_long_term",
+"move_to_implicit_layer",
+"convert_to_recurrence_rule",
+"return_to_human_review"
+]
+}
+}
+}
