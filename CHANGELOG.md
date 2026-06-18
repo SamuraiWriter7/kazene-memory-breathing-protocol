@@ -6,6 +6,137 @@ This project follows a candidate-release style during early protocol development
 
 ---
 
+## [v0.4.0-candidate] - 2026-06-18
+
+### Added
+
+* Added v0.4 documentation:
+
+  * `docs/structural-rumination-trace-compaction-integration.md`
+
+* Added structural rumination record schema:
+
+  * `schemas/structural-rumination-record.schema.json`
+
+* Added trace compaction record schema:
+
+  * `schemas/trace-compaction-record.schema.json`
+
+* Added structural rumination record example:
+
+  * `examples/structural-rumination-record.example.yaml`
+
+* Added trace compaction record example:
+
+  * `examples/trace-compaction-record.example.yaml`
+
+* Updated validation script to include v0.4 targets:
+
+  * `scripts/validate_examples.py`
+
+---
+
+### Defined
+
+* Defined **Structural Rumination / Trace Compaction Integration** as the fourth core layer of Kazene Memory Breathing Protocol.
+
+* Defined structural rumination as a process for turning failure into reusable structure.
+
+* Defined trace compaction as a process for reducing raw traces while preserving recurrence prevention value.
+
+* Defined `Structural Rumination Record` fields:
+
+  * source event,
+  * failure observation,
+  * affected layer,
+  * structural cause,
+  * rumination,
+  * recurrence pattern,
+  * reusable lesson,
+  * correction,
+  * output,
+  * release,
+  * human review.
+
+* Defined `Trace Compaction Record` fields:
+
+  * source trace,
+  * preserved elements,
+  * transformed structures,
+  * released elements,
+  * compaction result,
+  * active context reduction,
+  * recurrence prevention value,
+  * recommended memory weight,
+  * human review.
+
+* Defined failure-to-structure transformation flow:
+
+```text
+raw failure
+  → structural rumination
+  → trace compaction
+  → memory weight evaluation
+  → forgetting or retention decision
+  → recurrence prevention
+```
+
+---
+
+### Validation
+
+* Added validation targets:
+
+  * `Structural Rumination Record`
+  * `Trace Compaction Record`
+
+* Validation now checks:
+
+  * `memory-breathing-record.example.yaml`
+  * `forgetting-rule.example.yaml`
+  * `memory-retention-decision.example.yaml`
+  * `memory-weight-record.example.yaml`
+  * `structural-rumination-record.example.yaml`
+  * `trace-compaction-record.example.yaml`
+
+* Confirmed GitHub Actions validation passes with v0.4 schema-example integration.
+
+---
+
+### Structural Notes
+
+This release strengthens the protocol’s ability to metabolize failure.
+
+The protocol now supports the following flow:
+
+```text
+failure observation
+  → structural cause extraction
+  → recurrence pattern extraction
+  → reusable lesson
+  → confirmed correction
+  → trace compaction
+  → long-term prevention structure
+```
+
+This allows validation errors, YAML hierarchy failures, schema-example drift, Python syntax corruption, and workflow breakdowns to become reusable memory structures instead of repeated debugging burden.
+
+---
+
+### Status
+
+`v0.4.0-candidate` establishes Structural Rumination / Trace Compaction Integration as the fourth core layer of Kazene Memory Breathing Protocol.
+
+`v0.1.0-candidate` defined memory breathing.
+
+`v0.2.0-candidate` made forgetting executable.
+
+`v0.3.0-candidate` gave memory weight.
+
+`v0.4.0-candidate` turns failure into structure.
+
+---
+
 ## [v0.3.0-candidate] - 2026-06-18
 
 ### Added
@@ -369,3 +500,4 @@ This release produced several useful recurrence patterns for future protocol wor
 `v0.1.0-candidate` established the first working core of Kazene Memory Breathing Protocol.
 
 This release focused on the minimum viable memory breathing record and validation path.
+
