@@ -6,6 +6,130 @@ This project follows a candidate-release style during early protocol development
 
 ---
 
+## [v0.3.0-candidate] - 2026-06-18
+
+### Added
+
+* Added v0.3 documentation:
+
+  * `docs/memory-weight-architecture-integration.md`
+
+* Added memory weight record schema:
+
+  * `schemas/memory-weight-record.schema.json`
+
+* Added memory weight record example:
+
+  * `examples/memory-weight-record.example.yaml`
+
+* Updated validation script to include v0.3 target:
+
+  * `scripts/validate_examples.py`
+
+---
+
+### Defined
+
+* Defined **Memory Weight Architecture Integration** as an operational layer for AI memory routing.
+
+* Defined memory weight as a routing mechanism rather than a passive label.
+
+* Defined memory weight levels:
+
+  * `low`
+  * `medium`
+  * `high`
+  * `critical`
+
+* Defined memory evaluation criteria:
+
+  * importance,
+  * recurrence,
+  * future action value,
+  * safety impact,
+  * human preference relevance,
+  * trace value,
+  * freshness.
+
+* Defined memory routing fields:
+
+  * retention priority,
+  * destination layer,
+  * recommended action,
+  * review cycle,
+  * created structures.
+
+* Defined retention priorities:
+
+  * `release`
+  * `temporary`
+  * `retain`
+  * `promote`
+  * `protect`
+  * `review_required`
+
+* Defined review cycles:
+
+  * `none`
+  * `daily`
+  * `weekly`
+  * `monthly`
+  * `quarterly`
+  * `release_cycle`
+  * `on_major_change`
+  * `human_requested`
+
+---
+
+### Validation
+
+* Added validation target:
+
+  * `Memory Weight Record`
+
+* Validation now checks:
+
+  * `memory-breathing-record.example.yaml`
+  * `forgetting-rule.example.yaml`
+  * `memory-retention-decision.example.yaml`
+  * `memory-weight-record.example.yaml`
+
+* Confirmed GitHub Actions validation passes with v0.3 schema-example integration.
+
+---
+
+### Structural Notes
+
+This release connects memory weighting with executable forgetting.
+
+The protocol now supports the following flow:
+
+```text
+memory item
+  → weight evaluation
+  → retention priority
+  → memory layer routing
+  → recommended action
+  → review cycle
+  → forgetting or preservation decision
+```
+
+This allows recurring technical failures, durable preferences, trace-sensitive records, and safety boundaries to receive different memory treatment.
+
+---
+
+### Status
+
+`v0.3.0-candidate` establishes Memory Weight Architecture Integration as the third core layer of Kazene Memory Breathing Protocol.
+
+`v0.1.0-candidate` defined memory breathing.
+
+`v0.2.0-candidate` made forgetting executable.
+
+`v0.3.0-candidate` gives memory weight.
+
+---
+
 ## [v0.2.0-candidate] - 2026-06-18
 
 ### Added
@@ -128,11 +252,11 @@ The candidate process produced useful recurrence patterns:
 
 ### Status
 
-`v0.2.0-candidate` establishes executable forgetting as the second core layer of Kazene Memory Breathing Protocol.
+`v0.2.0-candidate` established executable forgetting as the second core layer of Kazene Memory Breathing Protocol.
 
 `v0.1.0-candidate` defined memory breathing.
 
-`v0.2.0-candidate` makes forgetting executable.
+`v0.2.0-candidate` made forgetting executable.
 
 ---
 
