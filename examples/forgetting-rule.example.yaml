@@ -1,0 +1,58 @@
+forgetting_rule:
+id: "forget-rule-2026-06-18-001"
+protocol_version: "0.2.0-candidate"
+name: "Convert resolved validation failure into recurrence rule"
+
+trigger:
+event: "validation_error_resolved"
+conditions:
+- "error_has_clear_recurrence_pattern"
+- "raw_log_is_no_longer_needed_for_current_task"
+- "correction_has_been_confirmed_by_validation"
+
+target:
+memory_type: "validation_error"
+description: "Resolved GitHub Actions validation failure caused by YAML hierarchy mismatch or schema-example drift"
+current_layer: "working_memory"
+source_ref: "github-actions-validation-log"
+
+evaluation:
+relevance: "medium"
+recurrence: "high"
+safety_impact: "medium"
+future_action_value: "high"
+human_sensitivity: "none"
+rationale:
+- "The raw log is no longer needed after the fix is confirmed."
+- "The failure pattern is likely to recur in future schema or workflow edits."
+- "The useful part of the memory is the prevention rule, not the full traceback."
+
+action:
+type: "convert_to_recurrence_rule"
+resulting_layer: "long_term_memory"
+creates:
+- "recurrence_rule"
+- "validation_gate"
+- "retention_decision"
+
+preserve:
+- "failure_pattern"
+- "root_cause"
+- "confirmed_correction"
+- "prevention_rule"
+- "validation_boundary"
+
+release:
+- "redundant_log_lines"
+- "temporary_debug_context"
+- "resolved_intermediate_comments"
+- "duplicate_error_messages"
+
+human_review:
+required: false
+default_action: "pause_and_return_to_human"
+
+notes:
+- "This rule demonstrates executable forgetting by converting a resolved technical failure into a reusable recurrence rule."
+- "The full raw trace is released from active memory after the prevention pattern is preserved."
+- "This supports lower context load while retaining future action value."
