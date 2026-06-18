@@ -1,0 +1,51 @@
+memory_weight_record:
+id: "mwr-2026-06-18-001"
+protocol_version: "0.3.0-candidate"
+
+memory_item:
+type: "recurring_error_pattern"
+summary: "YAML parent keys may become null when indentation collapses and child fields leak to the root level."
+source_layer: "working_memory"
+source_ref: "examples/forgetting-rule.example.yaml"
+
+evaluation:
+importance: "high"
+recurrence: "high"
+future_action_value: "high"
+safety_impact: "medium"
+human_preference_relevance: "low"
+trace_value: "medium"
+freshness: "active"
+rationale:
+- "This pattern is likely to recur during schema-example editing."
+- "Preserving the prevention pattern reduces future debugging load."
+- "The raw log can be released after the structural rule is retained."
+- "The pattern supports future validation and release workflows."
+
+weight:
+level: "high"
+confidence: "high"
+reason:
+- "The memory prevents repeated YAML hierarchy failures."
+- "The memory has high future action value for GitHub specification work."
+- "The memory can be converted into a recurrence rule and validation gate."
+
+routing:
+retention_priority: "promote"
+destination_layer: "long_term_memory"
+recommended_action: "convert_to_recurrence_rule"
+review_cycle: "release_cycle"
+creates:
+- "forgetting_rule"
+- "memory_retention_decision"
+- "recurrence_rule"
+- "validation_gate"
+
+human_review:
+required: false
+default_action: "pause_and_return_to_human"
+
+notes:
+- "This example shows how a recurring technical failure pattern receives high memory weight."
+- "The useful structure is preserved as a recurrence pattern, while raw troubleshooting noise can be released."
+- "This record connects v0.3 memory weighting with v0.2 executable forgetting rules."
