@@ -6,6 +6,160 @@ This project follows a candidate-release style during early protocol development
 
 ---
 
+## [v0.5.0-candidate] - 2026-06-18
+
+### Added
+
+* Added v0.5 documentation:
+
+  * `docs/multi-wing-memory-wing-integration.md`
+
+* Added multi-wing memory route schema:
+
+  * `schemas/multi-wing-memory-route.schema.json`
+
+* Added memory wing boundary schema:
+
+  * `schemas/memory-wing-boundary.schema.json`
+
+* Added multi-wing memory route example:
+
+  * `examples/multi-wing-memory-route.example.yaml`
+
+* Added memory wing boundary example:
+
+  * `examples/memory-wing-boundary.example.yaml`
+
+* Updated validation script to include v0.5 targets:
+
+  * `scripts/validate_examples.py`
+
+---
+
+### Defined
+
+* Defined **Multi-Wing Memory Wing Integration** as the fifth core layer of Kazene Memory Breathing Protocol.
+
+* Defined multi-wing memory routing as a structured event for moving memory between specialized AI wings.
+
+* Defined `Multi-Wing Memory Route` fields:
+
+  * source wing,
+  * destination wing,
+  * memory item,
+  * routing reason,
+  * memory weight,
+  * trace sensitivity,
+  * allowed action,
+  * routing purpose,
+  * constraints,
+  * human review,
+  * routing result.
+
+* Defined `Memory Wing Boundary` fields:
+
+  * wing,
+  * role,
+  * allowed inputs,
+  * allowed outputs,
+  * routing permissions,
+  * forgetting permissions,
+  * prohibited actions,
+  * human review triggers,
+  * default boundary action,
+  * memory scope.
+
+* Defined supported wing types:
+
+  * `human_interface_wing`
+  * `planning_wing`
+  * `research_wing`
+  * `coding_wing`
+  * `validation_wing`
+  * `structural_rumination_wing`
+  * `trace_compaction_wing`
+  * `memory_weight_wing`
+  * `forgetting_wing`
+  * `safety_review_wing`
+  * `governance_wing`
+  * `royalty_trace_wing`
+  * `implicit_breathing_wing`
+  * `archive_wing`
+
+* Defined multi-wing memory circulation flow:
+
+```text
+validation_wing
+  → structural_rumination_wing
+  → trace_compaction_wing
+  → memory_weight_wing
+  → forgetting_wing
+  → long_term_memory / human_review
+```
+
+---
+
+### Validation
+
+* Added validation targets:
+
+  * `Multi-Wing Memory Route`
+  * `Memory Wing Boundary`
+
+* Validation now checks:
+
+  * `memory-breathing-record.example.yaml`
+  * `forgetting-rule.example.yaml`
+  * `memory-retention-decision.example.yaml`
+  * `memory-weight-record.example.yaml`
+  * `structural-rumination-record.example.yaml`
+  * `trace-compaction-record.example.yaml`
+  * `multi-wing-memory-route.example.yaml`
+  * `memory-wing-boundary.example.yaml`
+
+* Confirmed GitHub Actions validation passes with v0.5 schema-example integration.
+
+---
+
+### Structural Notes
+
+This release extends the protocol from single-agent memory metabolism into multi-wing memory circulation.
+
+The protocol now supports the following flow:
+
+```text
+memory item
+  → wing-specific boundary check
+  → memory weight evaluation
+  → trace sensitivity check
+  → declared routing purpose
+  → cross-wing route
+  → destination wing action
+  → human review if boundary is crossed
+```
+
+This prevents memory from becoming one uncontrolled shared context across multiple AI agents.
+
+Each wing can remember only what it needs, route only with purpose, and return high-impact boundary cases to human review.
+
+---
+
+### Status
+
+`v0.5.0-candidate` establishes Multi-Wing Memory Wing Integration as the fifth core layer of Kazene Memory Breathing Protocol.
+
+`v0.1.0-candidate` defined memory breathing.
+
+`v0.2.0-candidate` made forgetting executable.
+
+`v0.3.0-candidate` gave memory weight.
+
+`v0.4.0-candidate` turned failure into structure.
+
+`v0.5.0-candidate` lets memory circulate across wings.
+
+---
+
 ## [v0.4.0-candidate] - 2026-06-18
 
 ### Added
@@ -44,32 +198,6 @@ This project follows a candidate-release style during early protocol development
 
 * Defined trace compaction as a process for reducing raw traces while preserving recurrence prevention value.
 
-* Defined `Structural Rumination Record` fields:
-
-  * source event,
-  * failure observation,
-  * affected layer,
-  * structural cause,
-  * rumination,
-  * recurrence pattern,
-  * reusable lesson,
-  * correction,
-  * output,
-  * release,
-  * human review.
-
-* Defined `Trace Compaction Record` fields:
-
-  * source trace,
-  * preserved elements,
-  * transformed structures,
-  * released elements,
-  * compaction result,
-  * active context reduction,
-  * recurrence prevention value,
-  * recommended memory weight,
-  * human review.
-
 * Defined failure-to-structure transformation flow:
 
 ```text
@@ -90,50 +218,13 @@ raw failure
   * `Structural Rumination Record`
   * `Trace Compaction Record`
 
-* Validation now checks:
-
-  * `memory-breathing-record.example.yaml`
-  * `forgetting-rule.example.yaml`
-  * `memory-retention-decision.example.yaml`
-  * `memory-weight-record.example.yaml`
-  * `structural-rumination-record.example.yaml`
-  * `trace-compaction-record.example.yaml`
-
 * Confirmed GitHub Actions validation passes with v0.4 schema-example integration.
-
----
-
-### Structural Notes
-
-This release strengthens the protocol’s ability to metabolize failure.
-
-The protocol now supports the following flow:
-
-```text
-failure observation
-  → structural cause extraction
-  → recurrence pattern extraction
-  → reusable lesson
-  → confirmed correction
-  → trace compaction
-  → long-term prevention structure
-```
-
-This allows validation errors, YAML hierarchy failures, schema-example drift, Python syntax corruption, and workflow breakdowns to become reusable memory structures instead of repeated debugging burden.
 
 ---
 
 ### Status
 
 `v0.4.0-candidate` establishes Structural Rumination / Trace Compaction Integration as the fourth core layer of Kazene Memory Breathing Protocol.
-
-`v0.1.0-candidate` defined memory breathing.
-
-`v0.2.0-candidate` made forgetting executable.
-
-`v0.3.0-candidate` gave memory weight.
-
-`v0.4.0-candidate` turns failure into structure.
 
 ---
 
@@ -182,34 +273,6 @@ This allows validation errors, YAML hierarchy failures, schema-example drift, Py
   * trace value,
   * freshness.
 
-* Defined memory routing fields:
-
-  * retention priority,
-  * destination layer,
-  * recommended action,
-  * review cycle,
-  * created structures.
-
-* Defined retention priorities:
-
-  * `release`
-  * `temporary`
-  * `retain`
-  * `promote`
-  * `protect`
-  * `review_required`
-
-* Defined review cycles:
-
-  * `none`
-  * `daily`
-  * `weekly`
-  * `monthly`
-  * `quarterly`
-  * `release_cycle`
-  * `on_major_change`
-  * `human_requested`
-
 ---
 
 ### Validation
@@ -218,46 +281,13 @@ This allows validation errors, YAML hierarchy failures, schema-example drift, Py
 
   * `Memory Weight Record`
 
-* Validation now checks:
-
-  * `memory-breathing-record.example.yaml`
-  * `forgetting-rule.example.yaml`
-  * `memory-retention-decision.example.yaml`
-  * `memory-weight-record.example.yaml`
-
 * Confirmed GitHub Actions validation passes with v0.3 schema-example integration.
-
----
-
-### Structural Notes
-
-This release connects memory weighting with executable forgetting.
-
-The protocol now supports the following flow:
-
-```text
-memory item
-  → weight evaluation
-  → retention priority
-  → memory layer routing
-  → recommended action
-  → review cycle
-  → forgetting or preservation decision
-```
-
-This allows recurring technical failures, durable preferences, trace-sensitive records, and safety boundaries to receive different memory treatment.
 
 ---
 
 ### Status
 
 `v0.3.0-candidate` establishes Memory Weight Architecture Integration as the third core layer of Kazene Memory Breathing Protocol.
-
-`v0.1.0-candidate` defined memory breathing.
-
-`v0.2.0-candidate` made forgetting executable.
-
-`v0.3.0-candidate` gives memory weight.
 
 ---
 
@@ -310,29 +340,14 @@ This allows recurring technical failures, durable preferences, trace-sensitive r
 
 * Defined **Memory Retention Decision** records as outcomes of applying executable forgetting rules.
 
-* Defined how raw traces can be transformed into:
-
-  * recurrence rules,
-  * validation gates,
-  * safety boundaries,
-  * implicit behavioral influences,
-  * archive records,
-  * or human review records.
-
 ---
 
 ### Validation
 
-* Added validation targets for:
+* Added validation targets:
 
   * `Forgetting Rule`
   * `Memory Retention Decision`
-
-* Validation now checks:
-
-  * `memory-breathing-record.example.yaml`
-  * `forgetting-rule.example.yaml`
-  * `memory-retention-decision.example.yaml`
 
 * Confirmed GitHub Actions validation passes with v0.2 schema-example integration.
 
@@ -346,48 +361,11 @@ This allows recurring technical failures, durable preferences, trace-sensitive r
 
 * Confirmed that many simultaneous `additionalProperties` errors usually indicate YAML indentation or parent-child hierarchy collapse.
 
-* Reinforced recurrence pattern:
-
-  * parent keys must contain their intended child fields,
-  * nested YAML objects must remain indented under their parent,
-  * schema-required fields must map directly to example structure.
-
----
-
-### Structural Notes
-
-This release strengthens the protocol’s own memory metabolism.
-
-The candidate process produced useful recurrence patterns:
-
-* GitHub Actions hierarchy must remain strict:
-
-  * `on`
-  * `jobs`
-  * `job`
-  * `steps`
-
-* Python dunder identifiers must be protected:
-
-  * `__future__`
-  * `__file__`
-  * `__name__`
-
-* Schema and example files must evolve together.
-
-* If JSON Schema reports many unexpected root-level fields, inspect YAML indentation first.
-
-* If parent keys are parsed as `null`, child fields have likely leaked out of the intended object.
-
 ---
 
 ### Status
 
 `v0.2.0-candidate` established executable forgetting as the second core layer of Kazene Memory Breathing Protocol.
-
-`v0.1.0-candidate` defined memory breathing.
-
-`v0.2.0-candidate` made forgetting executable.
 
 ---
 
@@ -436,11 +414,6 @@ The candidate process produced useful recurrence patterns:
   * implicit behavioral influence,
   * human review boundary.
 
-* Defined the transition from:
-
-  * accumulative intelligence,
-  * to breathing intelligence.
-
 ---
 
 ### Validation
@@ -468,36 +441,8 @@ The candidate process produced useful recurrence patterns:
 
 * Fixed schema-example mismatch around `implicit_breathing_layer`.
 
-* Aligned example YAML with schema-required fields:
-
-  * `influences`
-  * `expression_mode`
-  * `constraints`
-
----
-
-### Structural Notes
-
-This release produced several useful recurrence patterns for future protocol work:
-
-* GitHub Actions requires strict hierarchy:
-
-  * `on`
-  * `jobs`
-  * `job`
-  * `steps`
-
-* Python scripts copied through rendered Markdown must preserve dunder identifiers.
-
-* Schema and example files must evolve together.
-
-* Conceptually valid examples should not be weakened to fit an outdated schema when the schema should evolve instead.
-
 ---
 
 ### Status
 
 `v0.1.0-candidate` established the first working core of Kazene Memory Breathing Protocol.
-
-This release focused on the minimum viable memory breathing record and validation path.
-
