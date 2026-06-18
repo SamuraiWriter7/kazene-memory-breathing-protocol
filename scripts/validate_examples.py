@@ -36,6 +36,16 @@ VALIDATION_TARGETS = [
         "schema": ROOT / "schemas" / "memory-weight-record.schema.json",
         "example": ROOT / "examples" / "memory-weight-record.example.yaml",
     },
+    {
+        "name": "Structural Rumination Record",
+        "schema": ROOT / "schemas" / "structural-rumination-record.schema.json",
+        "example": ROOT / "examples" / "structural-rumination-record.example.yaml",
+    },
+    {
+        "name": "Trace Compaction Record",
+        "schema": ROOT / "schemas" / "trace-compaction-record.schema.json",
+        "example": ROOT / "examples" / "trace-compaction-record.example.yaml",
+    },
 ]
 
 
@@ -83,3 +93,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
