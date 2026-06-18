@@ -1,0 +1,53 @@
+multi_wing_memory_route:
+  id: "mwmr-2026-06-18-001"
+  protocol_version: "0.5.0-candidate"
+
+  source_wing: "validation_wing"
+  destination_wing: "structural_rumination_wing"
+
+  memory_item:
+    type: "validation_failure_pattern"
+    summary: "YAML parent key became null after indentation collapse, causing schema validation to report many unexpected root-level properties."
+    source_ref: "github-actions-validation-log"
+    related_records:
+      - "srr-2026-06-18-001"
+      - "tcr-2026-06-18-001"
+      - "mwr-2026-06-18-001"
+
+  routing:
+    reason: "A recurring validation failure pattern should be routed from the validation wing to the structural rumination wing for recurrence pattern extraction."
+    memory_weight: "high"
+    trace_sensitivity: "medium"
+    allowed_action: "analyze_and_extract_recurrence_pattern"
+    routing_purpose:
+      - "structural_rumination"
+      - "recurrence_prevention"
+      - "validation"
+    constraints:
+      - "do_not_expand_context_unnecessarily"
+      - "do_not_share_raw_trace_without_need"
+      - "preserve_source_reference"
+      - "preserve_human_review_boundary"
+      - "route_only_for_declared_purpose"
+
+  human_review:
+    required: false
+    default_action: "pause_and_return_to_human"
+
+  result:
+    status: "routed"
+    creates:
+      - "structural_rumination_record"
+      - "trace_compaction_record"
+      - "memory_weight_record"
+      - "recurrence_rule"
+      - "validation_gate"
+    destination_state: "working_memory"
+
+  notes:
+    - "The validation wing should not retain the full raw traceback after the failure pattern has been routed."
+    - "The structural rumination wing receives only the compacted failure pattern and source reference."
+    - "The routed memory should become a recurrence prevention structure after rumination."
+    - "This example demonstrates role-specific memory circulation between validation and structural rumination wings."
+    - "The route preserves source reference and prevents uncontrolled shared memory expansion."
+    - "High-weight recurring failures may cross wing boundaries when the routing purpose is explicit."
