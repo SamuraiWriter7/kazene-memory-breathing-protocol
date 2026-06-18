@@ -39,10 +39,17 @@ memory_breathing_record:
         - "old_versions"
         - "superseded_design_notes"
     
-    implicit_breathing_layer:
-      enabled: true
-      distilled_into:
-        - "implicit_behavioral_influence"
+implicit_breathing_layer:
+  influences:
+    - "prefer_structural_clarity"
+    - "reduce_cognitive_load"
+    - "avoid_redundant_questions"
+    - "preserve_human_review_boundary"
+    - "maintain_breathing_rhythm"
+  expression_mode: "behavioral_bias_not_explicit_memory"
+  constraints:
+    - "do_not_treat_memory_as_absolute_authority"
+    - "return_high_impact_decisions_to_human_review"
 
   forgetting_policy:
     default_action: "compress_or_release"
