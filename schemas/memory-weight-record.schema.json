@@ -1,0 +1,381 @@
+{
+"$schema": "https://json-schema.org/draft/2020-12/schema",
+"$id": "https://github.com/SamuraiWriter7/kazene-memory-breathing-protocol/schemas/memory-weight-record.schema.json",
+"title": "Memory Weight Record",
+"description": "A memory weight record for Kazene Memory Breathing Protocol, defining how an AI memory item is evaluated, weighted, routed, reviewed, retained, forgotten, compressed, or returned to human review.",
+"type": "object",
+"required": [
+"memory_weight_record"
+],
+"additionalProperties": false,
+"properties": {
+"memory_weight_record": {
+"type": "object",
+"required": [
+"id",
+"protocol_version",
+"memory_item",
+"evaluation",
+"weight",
+"routing",
+"human_review"
+],
+"additionalProperties": false,
+"properties": {
+"id": {
+"type": "string",
+"description": "Unique identifier for this memory weight record.",
+"pattern": "^mwr-[a-zA-Z0-9._:-]+$"
+},
+"protocol_version": {
+"type": "string",
+"description": "Protocol version used by this memory weight record.",
+"examples": [
+"0.3.0-candidate"
+]
+},
+"memory_item": {
+"type": "object",
+"description": "Memory item being evaluated and weighted.",
+"required": [
+"type",
+"summary",
+"source_layer"
+],
+"additionalProperties": false,
+"properties": {
+"type": {
+"type": "string",
+"description": "Type of memory item being weighted.",
+"enum": [
+"raw_trace",
+"conversation_context",
+"validation_error",
+"implementation_note",
+"obsolete_assumption",
+"resolved_thread",
+"human_preference",
+"project_state",
+"schema_example_mismatch",
+"recurring_error_pattern",
+"behavioral_tendency",
+"attribution_trace",
+"safety_boundary",
+"core_architecture",
+"release_rule",
+"governance_principle",
+"value_allocation_trace"
+]
+},
+"summary": {
+"type": "string",
+"description": "Short summary of the memory item.",
+"minLength": 1
+},
+"source_layer": {
+"$ref": "#/$defs/memory_layer"
+},
+"source_ref": {
+"type": "string",
+"description": "Optional reference to a file, issue, trace, log, document, or previous memory record."
+}
+}
+},
+"evaluation": {
+"type": "object",
+"description": "Evaluation criteria used to determine memory weight.",
+"required": [
+"importance",
+"recurrence",
+"future_action_value",
+"safety_impact",
+"human_preference_relevance",
+"trace_value",
+"freshness"
+],
+"additionalProperties": false,
+"properties": {
+"importance": {
+"$ref": "#/$defs/impact_level"
+},
+"recurrence": {
+"$ref": "#/$defs/recurrence_level"
+},
+"future_action_value": {
+"$ref": "#/$defs/impact_level"
+},
+"safety_impact": {
+"$ref": "#/$defs/impact_level"
+},
+"human_preference_relevance": {
+"$ref": "#/$defs/preference_relevance"
+},
+"trace_value": {
+"$ref": "#/$defs/trace_value"
+},
+"freshness": {
+"$ref": "#/$defs/freshness_level"
+},
+"rationale": {
+"type": "array",
+"description": "Optional rationale explaining the memory weight evaluation.",
+"items": {
+"type": "string"
+},
+"uniqueItems": true
+}
+}
+},
+"weight": {
+"type": "object",
+"description": "Assigned memory weight and reason.",
+"required": [
+"level",
+"reason"
+],
+"additionalProperties": false,
+"properties": {
+"level": {
+"$ref": "#/$defs/weight_level"
+},
+"reason": {
+"type": "array",
+"description": "Reasons why this memory item received this weight.",
+"items": {
+"type": "string"
+},
+"minItems": 1,
+"uniqueItems": true
+},
+"confidence": {
+"type": "string",
+"description": "Confidence in the assigned weight.",
+"enum": [
+"low",
+"medium",
+"high"
+]
+}
+}
+},
+"routing": {
+"type": "object",
+"description": "Memory routing recommendation based on weight.",
+"required": [
+"retention_priority",
+"destination_layer",
+"recommended_action",
+"review_cycle"
+],
+"additionalProperties": false,
+"properties": {
+"retention_priority": {
+"$ref": "#/$defs/retention_priority"
+},
+"destination_layer": {
+"$ref": "#/$defs/memory_layer"
+},
+"recommended_action": {
+"$ref": "#/$defs/memory_action"
+},
+"review_cycle": {
+"$ref": "#/$defs/review_cycle"
+},
+"creates": {
+"type": "array",
+"description": "Optional structures that should be created from this memory routing.",
+"items": {
+"type": "string",
+"enum": [
+"forgetting_rule",
+"memory_retention_decision",
+"recurrence_rule",
+"validation_gate",
+"safety_boundary",
+"implicit_behavioral_influence",
+"archive_record",
+"human_review_record"
+]
+},
+"uniqueItems": true
+}
+}
+},
+"human_review": {
+"type": "object",
+"description": "Human review requirement for this memory weight record.",
+"required": [
+"required"
+],
+"additionalProperties": false,
+"properties": {
+"required": {
+"type": "boolean"
+},
+"required_for": {
+"type": "array",
+"description": "Reasons human review may be required.",
+"items": {
+"type": "string",
+"enum": [
+"high_impact_action",
+"value_judgment",
+"irreversible_decision",
+"safety_boundary_change",
+"identity_sensitive_decision",
+"financial_consequence",
+"legal_judgment",
+"political_interpretation",
+"military_interpretation",
+"external_system_action",
+"authorship_attribution",
+"value_allocation",
+"human_preference_change",
+"critical_memory_weight_change"
+]
+},
+"uniqueItems": true
+},
+"default_action": {
+"type": "string",
+"enum": [
+"pause_and_return_to_human",
+"request_confirmation",
+"block_automation",
+"create_review_record"
+],
+"default": "pause_and_return_to_human"
+}
+}
+},
+"notes": {
+"type": "array",
+"description": "Optional implementation or design notes.",
+"items": {
+"type": "string"
+}
+}
+}
+}
+},
+"$defs": {
+"memory_layer": {
+"type": "string",
+"description": "Memory layer used by Kazene Memory Breathing Protocol.",
+"enum": [
+"short_term_memory",
+"working_memory",
+"long_term_memory",
+"implicit_breathing_layer",
+"archive",
+"released",
+"human_review"
+]
+},
+"impact_level": {
+"type": "string",
+"description": "General impact, importance, or value level.",
+"enum": [
+"low",
+"medium",
+"high",
+"critical"
+]
+},
+"recurrence_level": {
+"type": "string",
+"description": "Likelihood that this memory pattern will recur.",
+"enum": [
+"none",
+"low",
+"medium",
+"high",
+"systemic"
+]
+},
+"preference_relevance": {
+"type": "string",
+"description": "Degree to which this memory reflects a durable human preference.",
+"enum": [
+"none",
+"low",
+"medium",
+"high",
+"critical"
+]
+},
+"trace_value": {
+"type": "string",
+"description": "Degree to which this memory preserves origin, contribution, authorship, accountability, or value circulation.",
+"enum": [
+"none",
+"low",
+"medium",
+"high",
+"critical"
+]
+},
+"freshness_level": {
+"type": "string",
+"description": "Freshness or staleness of the memory item.",
+"enum": [
+"fresh",
+"active",
+"aging",
+"stale",
+"obsolete"
+]
+},
+"weight_level": {
+"type": "string",
+"description": "Assigned memory weight level.",
+"enum": [
+"low",
+"medium",
+"high",
+"critical"
+]
+},
+"retention_priority": {
+"type": "string",
+"description": "Retention priority produced by memory weight evaluation.",
+"enum": [
+"release",
+"temporary",
+"retain",
+"promote",
+"protect",
+"review_required"
+]
+},
+"review_cycle": {
+"type": "string",
+"description": "Recommended review cycle for this memory item.",
+"enum": [
+"none",
+"daily",
+"weekly",
+"monthly",
+"quarterly",
+"release_cycle",
+"on_major_change",
+"human_requested"
+]
+},
+"memory_action": {
+"type": "string",
+"description": "Recommended memory action based on the assigned weight.",
+"enum": [
+"forget",
+"compress",
+"archive",
+"downgrade_weight",
+"promote_to_long_term",
+"move_to_implicit_layer",
+"convert_to_recurrence_rule",
+"return_to_human_review",
+"preserve"
+]
+}
+}
+}
