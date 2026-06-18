@@ -922,3 +922,50 @@ The goal is not to build an AI that remembers everything.
 
 The goal is to build an AI that breathes, forgets, weighs, ruminates, compacts, routes, and metabolizes memory safely.
 
+## Memory Cycle Diagram
+
+Kazene Memory Breathing Protocol can be understood as a memory circulation cycle.
+
+```text
+Route
+  → Rumination
+  → Compaction
+  → Weighting
+  → Forgetting
+  → Retention
+  → Implicit
+  → Route
+```
+
+![Memory Cycle Diagram](docs/assets/memory-cycle-diagram.png)
+
+This diagram represents the core memory metabolism loop of the protocol.
+
+* **Route** — move memory with purpose across layers or wings.
+* **Rumination** — analyze failure, mismatch, or repeated pattern structurally.
+* **Compaction** — reduce raw trace into reusable form.
+* **Weighting** — assign gravity and priority to memory.
+* **Forgetting** — release low-value noise or obsolete context.
+* **Retention** — preserve durable guidance and recurrence prevention value.
+* **Implicit** — distill repeated guidance into behavioral posture.
+
+The cycle prevents AI memory from becoming a static warehouse.
+
+Instead, memory becomes a living metabolism:
+
+```text
+purposeful routing
+  → structural digestion
+  → trace reduction
+  → weighted decision
+  → safe forgetting
+  → durable retention
+  → implicit behavioral alignment
+```
+
+This is the operating loop behind the protocol.
+
+Memory is not stored forever.
+Memory is routed, digested, compacted, weighted, released, retained, and breathed back into behavior.
+
+![Memory Cycle Diagram](docs/assets/memory-cycle-diagram.png)
