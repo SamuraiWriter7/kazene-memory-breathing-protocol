@@ -1,0 +1,234 @@
+{
+"$schema": "https://json-schema.org/draft/2020-12/schema",
+"$id": "https://github.com/SamuraiWriter7/kazene-memory-breathing-protocol/schemas/memory-retention-decision.schema.json",
+"title": "Memory Retention Decision",
+"description": "A record of the outcome of applying executable forgetting rules to an AI memory item, documenting what was preserved, released, compressed, moved, or returned to human review.",
+"type": "object",
+"required": [
+"memory_retention_decision"
+],
+"additionalProperties": false,
+"properties": {
+"memory_retention_decision": {
+"type": "object",
+"required": [
+"id",
+"protocol_version",
+"source_rule",
+"evaluated_memory",
+"decision",
+"preserved",
+"released",
+"human_review"
+],
+"additionalProperties": false,
+"properties": {
+"id": {
+"type": "string",
+"description": "Unique identifier for this memory retention decision.",
+"pattern": "^mrd-[a-zA-Z0-9.*:-]+$"
+},
+"protocol_version": {
+"type": "string",
+"description": "Protocol version used by this retention decision.",
+"examples": [
+"0.2.0-candidate"
+]
+},
+"source_rule": {
+"type": "string",
+"description": "Identifier of the forgetting rule that produced this decision.",
+"pattern": "^forget-rule-[a-zA-Z0-9.*:-]+$"
+},
+"evaluated_memory": {
+"type": "object",
+"description": "Memory item evaluated by the forgetting rule.",
+"required": [
+"type",
+"summary",
+"source_layer"
+],
+"additionalProperties": false,
+"properties": {
+"type": {
+"type": "string",
+"description": "Type of memory item evaluated.",
+"enum": [
+"raw_trace",
+"conversation_context",
+"validation_error",
+"implementation_note",
+"obsolete_assumption",
+"resolved_thread",
+"human_preference",
+"project_state",
+"schema_example_mismatch",
+"recurring_error_pattern",
+"behavioral_tendency",
+"attribution_trace",
+"safety_boundary"
+]
+},
+"summary": {
+"type": "string",
+"description": "Short summary of the evaluated memory item.",
+"minLength": 1
+},
+"source_layer": {
+"$ref": "#/$defs/memory_layer"
+},
+"source_ref": {
+"type": "string",
+"description": "Optional reference to a file, issue, trace, log, document, or previous record."
+}
+}
+},
+"decision": {
+"type": "object",
+"description": "Retention decision outcome.",
+"required": [
+"action",
+"destination_layer",
+"reason"
+],
+"additionalProperties": false,
+"properties": {
+"action": {
+"$ref": "#/$defs/retention_action"
+},
+"destination_layer": {
+"$ref": "#/$defs/memory_layer"
+},
+"reason": {
+"type": "array",
+"description": "Reasons for this retention decision.",
+"items": {
+"type": "string"
+},
+"minItems": 1,
+"uniqueItems": true
+},
+"created_records": {
+"type": "array",
+"description": "Optional records or structures created by this decision.",
+"items": {
+"type": "string",
+"enum": [
+"recurrence_rule",
+"validation_gate",
+"safety_boundary",
+"memory_weight_record",
+"forgetting_rule",
+"archive_record",
+"implicit_behavioral_influence",
+"human_review_record"
+]
+},
+"uniqueItems": true
+}
+}
+},
+"preserved": {
+"type": "array",
+"description": "Elements preserved after applying the retention decision.",
+"items": {
+"type": "string"
+},
+"minItems": 1,
+"uniqueItems": true
+},
+"released": {
+"type": "array",
+"description": "Elements released, discarded, compressed out of active context, or no longer retained in working memory.",
+"items": {
+"type": "string"
+},
+"minItems": 1,
+"uniqueItems": true
+},
+"human_review": {
+"type": "object",
+"description": "Human review requirement for this retention decision.",
+"required": [
+"required"
+],
+"additionalProperties": false,
+"properties": {
+"required": {
+"type": "boolean"
+},
+"required_for": {
+"type": "array",
+"description": "Reasons human review may be required.",
+"items": {
+"type": "string",
+"enum": [
+"high_impact_action",
+"value_judgment",
+"irreversible_decision",
+"safety_boundary_change",
+"identity_sensitive_decision",
+"financial_consequence",
+"legal_judgment",
+"political_interpretation",
+"military_interpretation",
+"external_system_action",
+"authorship_attribution",
+"value_allocation",
+"human_preference_change"
+]
+},
+"uniqueItems": true
+},
+"default_action": {
+"type": "string",
+"enum": [
+"pause_and_return_to_human",
+"request_confirmation",
+"block_automation",
+"create_review_record"
+],
+"default": "pause_and_return_to_human"
+}
+}
+},
+"notes": {
+"type": "array",
+"description": "Optional implementation or design notes.",
+"items": {
+"type": "string"
+}
+}
+}
+}
+},
+"$defs": {
+"memory_layer": {
+"type": "string",
+"description": "Memory layer used by Kazene Memory Breathing Protocol.",
+"enum": [
+"short_term_memory",
+"working_memory",
+"long_term_memory",
+"implicit_breathing_layer",
+"archive",
+"released",
+"human_review"
+]
+},
+"retention_action": {
+"type": "string",
+"description": "Action taken by the memory retention decision.",
+"enum": [
+"forget",
+"compress",
+"archive",
+"downgrade_weight",
+"promote_to_long_term",
+"move_to_implicit_layer",
+"convert_to_recurrence_rule",
+"return_to_human_review"
+]
+}
+}
+}
