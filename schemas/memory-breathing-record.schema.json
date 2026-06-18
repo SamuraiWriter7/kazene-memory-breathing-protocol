@@ -1,0 +1,313 @@
+{
+"$schema": "https://json-schema.org/draft/2020-12/schema",
+"$id": "https://github.com/SamuraiWriter7/kazene-memory-breathing-protocol/schemas/memory-breathing-record.schema.json",
+"title": "Kazene Memory Breathing Record",
+"description": "A four-layer memory breathing record for AI systems, defining what to remember, forget, compress, preserve, and flow into implicit behavioral layers.",
+"type": "object",
+"required": [
+"memory_breathing_record"
+],
+"additionalProperties": false,
+"properties": {
+"memory_breathing_record": {
+"type": "object",
+"required": [
+"id",
+"protocol_version",
+"scope",
+"memory_layers",
+"forgetting_policy",
+"trace_compaction",
+"human_review_boundary"
+],
+"additionalProperties": false,
+"properties": {
+"id": {
+"type": "string",
+"description": "Unique identifier for this memory breathing record.",
+"pattern": "^kmbr-[a-zA-Z0-9._:-]+$"
+},
+"protocol_version": {
+"type": "string",
+"description": "Protocol version used by this record.",
+"examples": [
+"0.1.0-candidate"
+]
+},
+"scope": {
+"type": "string",
+"description": "Operational scope of this memory breathing record.",
+"examples": [
+"github_specification_workflow",
+"ai_agent_session",
+"long_term_project_memory",
+"mythos_tuning_session"
+]
+},
+"memory_layers": {
+"type": "object",
+"description": "The four-layer memory breathing structure.",
+"required": [
+"short_term_memory",
+"working_memory",
+"long_term_memory",
+"implicit_breathing_layer"
+],
+"additionalProperties": false,
+"properties": {
+"short_term_memory": {
+"$ref": "#/$defs/explicit_memory_layer"
+},
+"working_memory": {
+"$ref": "#/$defs/explicit_memory_layer"
+},
+"long_term_memory": {
+"$ref": "#/$defs/explicit_memory_layer"
+},
+"implicit_breathing_layer": {
+"$ref": "#/$defs/implicit_breathing_layer"
+}
+}
+},
+"forgetting_policy": {
+"type": "object",
+"description": "Policy for forgetting, compressing, archiving, or releasing memory items.",
+"required": [
+"default_action",
+"preserve",
+"release"
+],
+"additionalProperties": false,
+"properties": {
+"default_action": {
+"type": "string",
+"enum": [
+"delete",
+"compress",
+"archive",
+"downgrade_weight",
+"convert_to_rule",
+"move_to_implicit_layer",
+"compress_or_release",
+"return_to_human_review"
+]
+},
+"preserve": {
+"type": "array",
+"description": "Memory elements that should be preserved.",
+"items": {
+"type": "string"
+},
+"minItems": 1
+},
+"release": {
+"type": "array",
+"description": "Memory elements that may be released, compressed, or forgotten.",
+"items": {
+"type": "string"
+},
+"minItems": 1
+}
+}
+},
+"trace_compaction": {
+"type": "object",
+"description": "Trace compaction policy for transforming raw traces into reusable structure.",
+"required": [
+"enabled",
+"raw_trace_to_keep",
+"distilled_into"
+],
+"additionalProperties": false,
+"properties": {
+"enabled": {
+"type": "boolean"
+},
+"raw_trace_to_keep": {
+"type": "string",
+"enum": [
+"none",
+"minimal",
+"summary",
+"full"
+]
+},
+"distilled_into": {
+"type": "array",
+"description": "Reusable structures produced from raw traces.",
+"items": {
+"type": "string",
+"enum": [
+"recurrence_rule",
+"validation_gate",
+"safety_boundary",
+"memory_weight_record",
+"forgetting_rule",
+"human_review_trigger",
+"implicit_behavioral_influence"
+]
+},
+"minItems": 1,
+"uniqueItems": true
+},
+"composting_principle": {
+"type": "string",
+"description": "Optional principle describing how failure residue is transformed into reusable structure."
+}
+}
+},
+"human_review_boundary": {
+"type": "object",
+"description": "Boundary rules for cases where memory must not become automated authority.",
+"required": [
+"required",
+"required_for"
+],
+"additionalProperties": false,
+"properties": {
+"required": {
+"type": "boolean"
+},
+"required_for": {
+"type": "array",
+"description": "Cases that require human review.",
+"items": {
+"type": "string",
+"enum": [
+"high_impact_action",
+"value_judgment",
+"irreversible_decision",
+"safety_boundary_change",
+"identity_sensitive_decision",
+"financial_consequence",
+"legal_judgment",
+"political_interpretation",
+"military_interpretation",
+"external_system_action"
+]
+},
+"minItems": 1,
+"uniqueItems": true
+},
+"default_action": {
+"type": "string",
+"enum": [
+"pause_and_return_to_human",
+"request_confirmation",
+"block_automation",
+"create_review_record"
+],
+"default": "pause_and_return_to_human"
+}
+}
+},
+"notes": {
+"type": "array",
+"description": "Optional implementation or design notes.",
+"items": {
+"type": "string"
+}
+}
+}
+}
+},
+"$defs": {
+"explicit_memory_layer": {
+"type": "object",
+"description": "An explicit memory layer with a lifetime and memory actions.",
+"required": [
+"lifetime",
+"keep"
+],
+"additionalProperties": false,
+"properties": {
+"lifetime": {
+"type": "string",
+"enum": [
+"minutes_to_hours",
+"hours_to_days",
+"days_to_weeks",
+"weeks_to_months",
+"months_to_years",
+"adaptive"
+]
+},
+"keep": {
+"type": "array",
+"description": "Items to keep in this memory layer.",
+"items": {
+"type": "string"
+},
+"minItems": 1
+},
+"forget": {
+"type": "array",
+"description": "Items to forget or release from this memory layer.",
+"items": {
+"type": "string"
+}
+},
+"archive": {
+"type": "array",
+"description": "Items to archive after active use.",
+"items": {
+"type": "string"
+}
+},
+"compress": {
+"type": "array",
+"description": "Items to compress into shorter reusable form.",
+"items": {
+"type": "string"
+}
+},
+"weight": {
+"type": "string",
+"description": "Default memory weight for this layer.",
+"enum": [
+"low",
+"medium",
+"high",
+"critical"
+]
+}
+}
+},
+"implicit_breathing_layer": {
+"type": "object",
+"description": "Behavioral influence layer that shapes AI behavior without requiring explicit memory retrieval.",
+"required": [
+"influences",
+"expression_mode"
+],
+"additionalProperties": false,
+"properties": {
+"influences": {
+"type": "array",
+"description": "Implicit behavioral influences.",
+"items": {
+"type": "string"
+},
+"minItems": 1,
+"uniqueItems": true
+},
+"expression_mode": {
+"type": "string",
+"enum": [
+"behavioral_bias_not_explicit_memory",
+"compressed_alignment_posture",
+"implicit_response_tendency",
+"breathing_rhythm_guidance"
+]
+},
+"constraints": {
+"type": "array",
+"description": "Optional constraints for the implicit layer.",
+"items": {
+"type": "string"
+}
+}
+}
+}
+}
+}
