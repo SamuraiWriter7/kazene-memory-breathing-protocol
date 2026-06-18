@@ -14,7 +14,7 @@ memory_breathing_record:
       forget:
         - "irrelevant_conversation_history"
         - "outdated_assumptions"
-   
+
     working_memory:
       lifetime: "days_to_weeks"
       keep:
@@ -27,7 +27,7 @@ memory_breathing_record:
         - "obsolete_branch_notes"
       compress:
         - "long_discussion_summaries"
-     
+
     long_term_memory:
       lifetime: "months_to_years"
       keep:
@@ -38,18 +38,18 @@ memory_breathing_record:
       compress:
         - "old_versions"
         - "superseded_design_notes"
-    
-implicit_breathing_layer:
-  influences:
-    - "prefer_structural_clarity"
-    - "reduce_cognitive_load"
-    - "avoid_redundant_questions"
-    - "preserve_human_review_boundary"
-    - "maintain_breathing_rhythm"
-  expression_mode: "behavioral_bias_not_explicit_memory"
-  constraints:
-    - "do_not_treat_memory_as_absolute_authority"
-    - "return_high_impact_decisions_to_human_review"
+
+    implicit_breathing_layer:
+      influences:
+        - "prefer_structural_clarity"
+        - "reduce_cognitive_load"
+        - "avoid_redundant_questions"
+        - "preserve_human_review_boundary"
+        - "maintain_breathing_rhythm"
+      expression_mode: "behavioral_bias_not_explicit_memory"
+      constraints:
+        - "do_not_treat_memory_as_absolute_authority"
+        - "return_high_impact_decisions_to_human_review"
 
   forgetting_policy:
     default_action: "compress_or_release"
@@ -88,4 +88,5 @@ implicit_breathing_layer:
     - "This example shows how AI memory can be reduced through weighting, forgetting, and trace compaction."
     - "The goal is not to preserve every detail, but to retain what guides future action."
     - "Short-term context should be released after use, while durable patterns should be compressed into long-term or implicit layers."
+
 
