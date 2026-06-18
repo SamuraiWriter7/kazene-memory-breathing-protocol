@@ -2,7 +2,7 @@
 
 ## AI Memory Metabolism for Weighted Memory, Forgetting, Trace Compaction, and Implicit Breathing Layers
 
-**Version:** v0.3.0-candidate
+**Version:** v0.4.0-candidate
 **Status:** Candidate
 **Repository:** `kazene-memory-breathing-protocol`
 
@@ -22,6 +22,8 @@ It defines how AI systems should decide:
 * what to move into implicit behavioral layers,
 * what to weight as important,
 * what to downgrade or promote,
+* what failure patterns to preserve,
+* what traces to compact,
 * and what to return to human review.
 
 The goal is not to make AI remember everything.
@@ -49,6 +51,7 @@ Without memory breathing, AI systems may accumulate:
 * unnecessary token load,
 * unclear responsibility boundaries,
 * low-value memory residue,
+* unprocessed failure traces,
 * and excessive cognitive burden for humans.
 
 Kazene Memory Breathing Protocol introduces:
@@ -57,7 +60,8 @@ Kazene Memory Breathing Protocol introduces:
 * executable forgetting rules,
 * memory retention decisions,
 * memory weight records,
-* trace compaction,
+* structural rumination records,
+* trace compaction records,
 * implicit behavioral influence,
 * and human review boundaries.
 
@@ -218,7 +222,7 @@ This allows AI memory metabolism to become traceable instead of invisible.
 
 ## Memory Weight Architecture Integration
 
-`v0.3.0-candidate` adds **Memory Weight Architecture Integration**.
+`v0.3.0-candidate` added **Memory Weight Architecture Integration**.
 
 Memory weight defines how strongly a memory item should influence future AI behavior.
 
@@ -301,6 +305,77 @@ preserve / return_to_human_review / create_review_record
 
 ---
 
+## Structural Rumination / Trace Compaction Integration
+
+`v0.4.0-candidate` adds **Structural Rumination / Trace Compaction Integration**.
+
+This layer defines how AI systems process failures, validation errors, schema-example mismatches, workflow breakdowns, and debugging traces into reusable memory structures.
+
+The goal is not to preserve every error log.
+
+The goal is to extract the reusable structure.
+
+```text
+raw failure
+  → structural rumination
+  → trace compaction
+  → memory weight evaluation
+  → forgetting or retention decision
+  → recurrence prevention
+```
+
+---
+
+## Structural Rumination Record
+
+A structural rumination record documents how a failure was analyzed.
+
+It captures:
+
+* source event,
+* observed symptoms,
+* affected layers,
+* structural cause,
+* recurrence pattern,
+* reusable lesson,
+* confirmed correction,
+* recommended memory weight,
+* recommended destination layer,
+* and human review boundary.
+
+This allows failure to become reusable structure instead of unresolved residue.
+
+---
+
+## Trace Compaction Record
+
+A trace compaction record documents how a raw trace was reduced into useful memory.
+
+It captures:
+
+* source trace,
+* preserved elements,
+* transformed structures,
+* released noise,
+* compaction result,
+* active context reduction,
+* recurrence prevention value,
+* recommended memory weight,
+* and human review requirement.
+
+Trace compaction may transform raw logs into:
+
+* recurrence rules,
+* validation gates,
+* memory weight records,
+* forgetting rules,
+* memory retention decisions,
+* safety boundaries,
+* human review triggers,
+* or implicit behavioral influences.
+
+---
+
 ## Trace Compaction
 
 Trace Compaction transforms raw logs into reusable structure.
@@ -336,6 +411,8 @@ Human review is required when memory affects:
 * value allocation,
 * identity-sensitive decisions,
 * financial consequences,
+* accountability rewrites,
+* trace loss risk,
 * or external system actions.
 
 Memory may guide.
@@ -372,7 +449,7 @@ It must not become unchecked authority.
 
 ### v0.3.0-candidate — Memory Weight Architecture Integration
 
-`v0.3.0-candidate` adds weighted memory routing:
+`v0.3.0-candidate` added weighted memory routing:
 
 * memory weight record schema,
 * memory weight example,
@@ -383,6 +460,21 @@ It must not become unchecked authority.
 * integration with executable forgetting rules,
 * and validation integration.
 
+### v0.4.0-candidate — Structural Rumination / Trace Compaction Integration
+
+`v0.4.0-candidate` adds failure-to-structure metabolism:
+
+* structural rumination record schema,
+* trace compaction record schema,
+* structural rumination example,
+* trace compaction example,
+* failure observation model,
+* structural cause extraction,
+* recurrence pattern extraction,
+* trace compaction output,
+* validation integration,
+* and human review boundary expansion.
+
 ---
 
 ## Repository Structure
@@ -392,18 +484,23 @@ docs/
   kazene-memory-breathing-protocol.md
   executable-forgetting-rules.md
   memory-weight-architecture-integration.md
+  structural-rumination-trace-compaction-integration.md
 
 schemas/
   memory-breathing-record.schema.json
   forgetting-rule.schema.json
   memory-retention-decision.schema.json
   memory-weight-record.schema.json
+  structural-rumination-record.schema.json
+  trace-compaction-record.schema.json
 
 examples/
   memory-breathing-record.example.yaml
   forgetting-rule.example.yaml
   memory-retention-decision.example.yaml
   memory-weight-record.example.yaml
+  structural-rumination-record.example.yaml
+  trace-compaction-record.example.yaml
 
 scripts/
   validate_examples.py
@@ -424,6 +521,8 @@ schemas/memory-breathing-record.schema.json
 schemas/forgetting-rule.schema.json
 schemas/memory-retention-decision.schema.json
 schemas/memory-weight-record.schema.json
+schemas/structural-rumination-record.schema.json
+schemas/trace-compaction-record.schema.json
 ```
 
 These define:
@@ -432,11 +531,14 @@ These define:
 * executable forgetting rules,
 * memory retention decisions,
 * memory weight records,
+* structural rumination records,
+* trace compaction records,
 * memory layers,
 * forgetting actions,
 * retention priorities,
 * review cycles,
 * trace compaction outcomes,
+* recurrence prevention outputs,
 * and human review boundaries.
 
 ---
@@ -450,6 +552,8 @@ examples/memory-breathing-record.example.yaml
 examples/forgetting-rule.example.yaml
 examples/memory-retention-decision.example.yaml
 examples/memory-weight-record.example.yaml
+examples/structural-rumination-record.example.yaml
+examples/trace-compaction-record.example.yaml
 ```
 
 These demonstrate:
@@ -457,7 +561,9 @@ These demonstrate:
 * a four-layer memory breathing record,
 * a forgetting rule that converts resolved validation failure into a recurrence rule,
 * a memory retention decision that preserves useful prevention patterns while releasing unnecessary raw logs,
-* and a memory weight record that assigns high weight to recurring YAML hierarchy failure patterns.
+* a memory weight record that assigns high weight to recurring YAML hierarchy failure patterns,
+* a structural rumination record that analyzes a YAML hierarchy failure,
+* and a trace compaction record that preserves reusable failure structure while releasing debugging noise.
 
 ---
 
@@ -492,6 +598,17 @@ scripts/validate_examples.py
 .github/workflows/validate-examples.yml
 ```
 
+Expected validation targets:
+
+```text
+Memory Breathing Record
+Forgetting Rule
+Memory Retention Decision
+Memory Weight Record
+Structural Rumination Record
+Trace Compaction Record
+```
+
 ---
 
 ## Design Philosophy
@@ -508,6 +625,12 @@ Weight is routing gravity.
 
 Trace is not burden.
 Trace is material for recurrence prevention.
+
+Rumination is not regret.
+Rumination is structural digestion.
+
+Compaction is not erasure.
+Compaction is transformation.
 
 Implicit behavior is not hidden control.
 It is compressed alignment posture.
@@ -547,7 +670,8 @@ Memory breathing provides:
 * clearer behavioral tendencies,
 * reduced redundant reasoning,
 * safer action boundaries,
-* and weight-based memory routing.
+* weight-based memory routing,
+* and failure-to-structure transformation.
 
 ### Royalty OS / Trace Layer
 
@@ -559,6 +683,7 @@ Kazene Memory Breathing Protocol helps decide:
 * what temporary logs can be compressed,
 * what attribution records must remain durable,
 * what memory requires critical weight,
+* what compaction would risk trace loss,
 * and what should not be forgotten because it affects value return.
 
 ### AI Breathing Efficiency Standard
@@ -570,6 +695,7 @@ Kazene Memory Breathing Protocol reduces the amount of memory and context that m
 ```text
 less memory noise
   → weighted memory routing
+  → trace compaction
   → less context load
   → fewer tokens
   → shorter reasoning
@@ -581,16 +707,6 @@ less memory noise
 
 ## Future Roadmap
 
-### v0.4 — Structural Rumination / Trace Compaction Integration
-
-Planned direction:
-
-* recurrence rule linkage,
-* rumination record integration,
-* failure-to-rule transformation,
-* validation gate records,
-* trace compaction records.
-
 ### v0.5 — Multi-Wing Memory Wing Integration
 
 Planned direction:
@@ -599,19 +715,21 @@ Planned direction:
 * shared memory boundaries,
 * agent-to-agent trace compaction,
 * cross-agent forgetting governance,
-* Multi-Wing Memory Wing definition.
+* Multi-Wing Memory Wing definition,
+* memory circulation across AI agent roles,
+* and human review boundaries for multi-agent memory systems.
 
 ---
 
 ## Current Status
 
-`v0.3.0-candidate` establishes Memory Weight Architecture Integration as the third core layer of Kazene Memory Breathing Protocol.
+`v0.4.0-candidate` establishes Structural Rumination / Trace Compaction Integration as the fourth core layer of Kazene Memory Breathing Protocol.
 
 The protocol now has:
 
 * documentation,
-* four JSON Schemas,
-* four YAML examples,
+* six JSON Schemas,
+* six YAML examples,
 * a validation script,
 * and GitHub Actions validation.
 
@@ -625,7 +743,7 @@ Kazene Memory Breathing Protocol helps AI systems:
 * forget safely,
 * weight memory by future value,
 * route memory across layers,
-* compress traces,
+* compact traces,
 * preserve important patterns,
 * reduce cognitive and computational load,
 * convert failures into reusable prevention structures,
@@ -633,6 +751,7 @@ Kazene Memory Breathing Protocol helps AI systems:
 
 The goal is not to build an AI that remembers everything.
 
-The goal is to build an AI that breathes, forgets, weighs, and metabolizes memory safely.
+The goal is to build an AI that breathes, forgets, weighs, ruminates, compacts, and metabolizes memory safely.
+
 
 
