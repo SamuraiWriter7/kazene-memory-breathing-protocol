@@ -1,0 +1,70 @@
+structural_rumination_record:
+id: "srr-2026-06-18-001"
+protocol_version: "0.4.0-candidate"
+
+source_event:
+type: "yaml_hierarchy_failure"
+summary: "YAML parent key became null after indentation collapse, causing child fields to leak to the root level."
+source_ref: "github-actions-validation-log"
+
+failure_observation:
+symptom:
+- "jsonschema reported many unexpected root-level properties."
+- "the parent key was parsed as null."
+- "nested child fields appeared outside their intended object."
+- "validation failed even though the conceptual content was correct."
+affected_layer:
+- "examples"
+- "schema_validation"
+- "release_process"
+
+structural_cause:
+primary: "YAML indentation loss broke the parent-child object hierarchy."
+contributing_factors:
+- "Nested fields were not indented under the forgetting_rule parent key."
+- "The schema expected a structured object, but the example produced null parent keys."
+- "The validation error appeared as many additionalProperties violations."
+layer_mismatch:
+- "example YAML hierarchy did not match schema-required nesting."
+- "conceptual structure was correct, but representation structure was broken."
+
+rumination:
+recurrence_pattern: "Parent keys become null when YAML child fields lose indentation, causing schema validation to report many unexpected root-level properties."
+reusable_lesson:
+- "When many additionalProperties errors appear at once, inspect YAML indentation before changing the schema."
+- "When a parent key is parsed as null, child fields have likely leaked outside the intended object."
+- "Conceptually correct YAML can still fail if hierarchy is broken."
+- "Schema and example files must evolve together."
+correction:
+- "Re-indent all child fields under the correct parent key."
+- "Confirm that parent keys contain structured objects instead of null values."
+- "Run python scripts/validate_examples.py after editing nested YAML examples."
+prevention_hint:
+- "Check YAML hierarchy before assuming schema logic is wrong."
+- "Treat many simultaneous unexpected properties as a likely indentation failure."
+- "Validate examples locally before release tagging."
+
+output:
+create:
+- "recurrence_rule"
+- "validation_gate"
+- "memory_weight_record"
+- "trace_compaction_record"
+recommended_memory_weight: "high"
+recommended_destination_layer: "long_term_memory"
+recommended_action: "convert_to_recurrence_rule"
+
+release:
+- "full CI traceback after correction is confirmed"
+- "temporary troubleshooting chatter"
+- "duplicate validation error messages"
+- "resolved intermediate debugging context"
+
+human_review:
+required: false
+default_action: "pause_and_return_to_human"
+
+notes:
+- "This example records a structural rumination event for a YAML hierarchy failure."
+- "The raw failure is transformed into reusable prevention structure."
+- "The retained memory should guide future schema-example validation work."
