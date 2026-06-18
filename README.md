@@ -2,7 +2,7 @@
 
 ## AI Memory Metabolism for Weighted Memory, Forgetting, Trace Compaction, and Implicit Breathing Layers
 
-**Version:** v0.2.0-candidate
+**Version:** v0.3.0-candidate
 **Status:** Candidate
 **Repository:** `kazene-memory-breathing-protocol`
 
@@ -20,6 +20,8 @@ It defines how AI systems should decide:
 * what to archive,
 * what to transform into reusable rules,
 * what to move into implicit behavioral layers,
+* what to weight as important,
+* what to downgrade or promote,
 * and what to return to human review.
 
 The goal is not to make AI remember everything.
@@ -46,14 +48,15 @@ Without memory breathing, AI systems may accumulate:
 * repeated validation errors,
 * unnecessary token load,
 * unclear responsibility boundaries,
+* low-value memory residue,
 * and excessive cognitive burden for humans.
 
 Kazene Memory Breathing Protocol introduces:
 
 * four-layer memory breathing,
-* memory weighting,
 * executable forgetting rules,
 * memory retention decisions,
+* memory weight records,
 * trace compaction,
 * implicit behavioral influence,
 * and human review boundaries.
@@ -69,6 +72,7 @@ Do not reason over everything.
 Do not output everything.
 
 Remember what must guide future action.
+Weight memory by future value.
 Compress repeated patterns.
 Release one-time noise.
 Transform failure into reusable structure.
@@ -170,7 +174,7 @@ Examples:
 
 ## Executable Forgetting Rules
 
-`v0.2.0-candidate` adds **Executable Forgetting Rules**.
+`v0.2.0-candidate` introduced **Executable Forgetting Rules**.
 
 Forgetting is not treated as simple deletion.
 
@@ -196,8 +200,6 @@ Forgetting is transformation.
 
 ## Memory Retention Decision
 
-`v0.2.0-candidate` also introduces **Memory Retention Decision** records.
-
 A memory retention decision records the outcome of applying an executable forgetting rule.
 
 It documents:
@@ -211,6 +213,91 @@ It documents:
 * and whether human review was required.
 
 This allows AI memory metabolism to become traceable instead of invisible.
+
+---
+
+## Memory Weight Architecture Integration
+
+`v0.3.0-candidate` adds **Memory Weight Architecture Integration**.
+
+Memory weight defines how strongly a memory item should influence future AI behavior.
+
+A memory item may be evaluated by:
+
+* importance,
+* recurrence,
+* future action value,
+* safety impact,
+* human preference relevance,
+* trace value,
+* freshness,
+* and review requirement.
+
+Memory weight is not only a label.
+
+It determines routing.
+
+```text
+memory item
+  → weight evaluation
+  → retention priority
+  → memory layer decision
+  → review cycle
+  → forgetting or preservation action
+```
+
+---
+
+## Memory Weight Levels
+
+The protocol defines four default memory weight levels:
+
+```text
+low
+medium
+high
+critical
+```
+
+### Low
+
+Low weight memory has little future action value.
+
+Typical action:
+
+```text
+forget / compress / release
+```
+
+### Medium
+
+Medium weight memory has project-level value during an active task, release, or repository cycle.
+
+Typical action:
+
+```text
+keep temporarily / archive after resolution / compress if repeated
+```
+
+### High
+
+High weight memory has repeated future action value.
+
+Typical action:
+
+```text
+promote_to_long_term / convert_to_recurrence_rule / create_validation_gate
+```
+
+### Critical
+
+Critical weight memory affects safety, governance, authorship, attribution, value allocation, or high-impact decisions.
+
+Typical action:
+
+```text
+preserve / return_to_human_review / create_review_record
+```
 
 ---
 
@@ -274,7 +361,7 @@ It must not become unchecked authority.
 
 ### v0.2.0-candidate — Executable Forgetting Rules
 
-`v0.2.0-candidate` adds executable memory metabolism:
+`v0.2.0-candidate` added executable memory metabolism:
 
 * forgetting rule schema,
 * memory retention decision schema,
@@ -282,6 +369,19 @@ It must not become unchecked authority.
 * example retention decision,
 * validation integration,
 * documentation for executable forgetting.
+
+### v0.3.0-candidate — Memory Weight Architecture Integration
+
+`v0.3.0-candidate` adds weighted memory routing:
+
+* memory weight record schema,
+* memory weight example,
+* weight evaluation criteria,
+* retention priority,
+* review cycle,
+* weight-based routing,
+* integration with executable forgetting rules,
+* and validation integration.
 
 ---
 
@@ -291,16 +391,19 @@ It must not become unchecked authority.
 docs/
   kazene-memory-breathing-protocol.md
   executable-forgetting-rules.md
+  memory-weight-architecture-integration.md
 
 schemas/
   memory-breathing-record.schema.json
   forgetting-rule.schema.json
   memory-retention-decision.schema.json
+  memory-weight-record.schema.json
 
 examples/
   memory-breathing-record.example.yaml
   forgetting-rule.example.yaml
   memory-retention-decision.example.yaml
+  memory-weight-record.example.yaml
 
 scripts/
   validate_examples.py
@@ -320,6 +423,7 @@ Current schemas:
 schemas/memory-breathing-record.schema.json
 schemas/forgetting-rule.schema.json
 schemas/memory-retention-decision.schema.json
+schemas/memory-weight-record.schema.json
 ```
 
 These define:
@@ -327,8 +431,11 @@ These define:
 * memory breathing records,
 * executable forgetting rules,
 * memory retention decisions,
+* memory weight records,
 * memory layers,
 * forgetting actions,
+* retention priorities,
+* review cycles,
 * trace compaction outcomes,
 * and human review boundaries.
 
@@ -342,13 +449,15 @@ Current examples:
 examples/memory-breathing-record.example.yaml
 examples/forgetting-rule.example.yaml
 examples/memory-retention-decision.example.yaml
+examples/memory-weight-record.example.yaml
 ```
 
 These demonstrate:
 
 * a four-layer memory breathing record,
 * a forgetting rule that converts resolved validation failure into a recurrence rule,
-* and a memory retention decision that preserves useful prevention patterns while releasing unnecessary raw logs.
+* a memory retention decision that preserves useful prevention patterns while releasing unnecessary raw logs,
+* and a memory weight record that assigns high weight to recurring YAML hierarchy failure patterns.
 
 ---
 
@@ -394,6 +503,9 @@ Memory is metabolism.
 Forgetting is not loss.
 Forgetting is circulation.
 
+Weight is not attachment.
+Weight is routing gravity.
+
 Trace is not burden.
 Trace is material for recurrence prevention.
 
@@ -434,7 +546,8 @@ Memory breathing provides:
 * shorter context paths,
 * clearer behavioral tendencies,
 * reduced redundant reasoning,
-* safer action boundaries.
+* safer action boundaries,
+* and weight-based memory routing.
 
 ### Royalty OS / Trace Layer
 
@@ -445,6 +558,7 @@ Kazene Memory Breathing Protocol helps decide:
 * what traces must be preserved,
 * what temporary logs can be compressed,
 * what attribution records must remain durable,
+* what memory requires critical weight,
 * and what should not be forgotten because it affects value return.
 
 ### AI Breathing Efficiency Standard
@@ -455,6 +569,7 @@ Kazene Memory Breathing Protocol reduces the amount of memory and context that m
 
 ```text
 less memory noise
+  → weighted memory routing
   → less context load
   → fewer tokens
   → shorter reasoning
@@ -466,16 +581,6 @@ less memory noise
 
 ## Future Roadmap
 
-### v0.3 — Memory Weight Architecture Integration
-
-Planned direction:
-
-* formal memory weight records,
-* retention priority,
-* review cycles,
-* memory promotion and downgrade logic,
-* integration with existing Memory Weight Architecture.
-
 ### v0.4 — Structural Rumination / Trace Compaction Integration
 
 Planned direction:
@@ -483,7 +588,8 @@ Planned direction:
 * recurrence rule linkage,
 * rumination record integration,
 * failure-to-rule transformation,
-* validation gate records.
+* validation gate records,
+* trace compaction records.
 
 ### v0.5 — Multi-Wing Memory Wing Integration
 
@@ -499,13 +605,13 @@ Planned direction:
 
 ## Current Status
 
-`v0.2.0-candidate` establishes executable forgetting as a working extension of the Four-Layer Memory Breathing Core.
+`v0.3.0-candidate` establishes Memory Weight Architecture Integration as the third core layer of Kazene Memory Breathing Protocol.
 
 The protocol now has:
 
 * documentation,
-* three JSON Schemas,
-* three YAML examples,
+* four JSON Schemas,
+* four YAML examples,
 * a validation script,
 * and GitHub Actions validation.
 
@@ -517,6 +623,8 @@ Kazene Memory Breathing Protocol helps AI systems:
 
 * remember less but better,
 * forget safely,
+* weight memory by future value,
+* route memory across layers,
 * compress traces,
 * preserve important patterns,
 * reduce cognitive and computational load,
@@ -525,5 +633,6 @@ Kazene Memory Breathing Protocol helps AI systems:
 
 The goal is not to build an AI that remembers everything.
 
-The goal is to build an AI that breathes, forgets, and metabolizes memory safely.
+The goal is to build an AI that breathes, forgets, weighs, and metabolizes memory safely.
+
 
