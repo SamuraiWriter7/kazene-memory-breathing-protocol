@@ -1,0 +1,93 @@
+memory_breathing_record:
+id: "kmbr-2026-06-18-001"
+protocol_version: "0.1.0-candidate"
+scope: "github_specification_workflow"
+
+memory_layers:
+short_term_memory:
+lifetime: "minutes_to_hours"
+keep:
+- "current_task"
+- "active_file_paths"
+- "latest_validation_error"
+- "user_intent_now"
+forget:
+- "irrelevant_conversation_history"
+- "outdated_assumptions"
+weight: "low"
+
+working_memory:
+  lifetime: "days_to_weeks"
+  keep:
+    - "repository_state"
+    - "release_candidate_status"
+    - "validation_rules"
+    - "active_design_direction"
+  archive:
+    - "resolved_threads"
+    - "obsolete_branch_notes"
+  compress:
+    - "long_discussion_summaries"
+  weight: "medium"
+
+long_term_memory:
+  lifetime: "months_to_years"
+  keep:
+    - "core_architecture"
+    - "recurring_error_patterns"
+    - "human_preferences"
+    - "project_philosophy"
+  compress:
+    - "old_versions"
+    - "superseded_design_notes"
+  weight: "high"
+
+implicit_breathing_layer:
+  influences:
+    - "prefer_structural_clarity"
+    - "reduce_cognitive_load"
+    - "avoid_redundant_questions"
+    - "preserve_human_review_boundary"
+    - "maintain_breathing_rhythm"
+  expression_mode: "behavioral_bias_not_explicit_memory"
+  constraints:
+    - "do_not_treat_memory_as_absolute_authority"
+    - "return_high_impact_decisions_to_human_review"
+
+forgetting_policy:
+default_action: "compress_or_release"
+preserve:
+- "final_decisions"
+- "recurrence_rules"
+- "validation_boundaries"
+- "human_review_requirements"
+release:
+- "redundant_explanations"
+- "obsolete_assumptions"
+- "one_time_noise"
+- "resolved_temporary_details"
+
+trace_compaction:
+enabled: true
+raw_trace_to_keep: "minimal"
+distilled_into:
+- "recurrence_rule"
+- "validation_gate"
+- "safety_boundary"
+- "forgetting_rule"
+composting_principle: "turn_failure_residue_into_reusable_structure"
+
+human_review_boundary:
+required: true
+required_for:
+- "high_impact_action"
+- "value_judgment"
+- "irreversible_decision"
+- "safety_boundary_change"
+- "external_system_action"
+default_action: "pause_and_return_to_human"
+
+notes:
+- "This example shows how AI memory can be reduced through weighting, forgetting, and trace compaction."
+- "The goal is not to preserve every detail, but to retain what guides future action."
+- "Short-term context should be released after use, while durable patterns should be compressed into long-term or implicit layers."
