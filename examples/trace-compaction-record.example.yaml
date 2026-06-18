@@ -1,0 +1,51 @@
+trace_compaction_record:
+id: "tcr-2026-06-18-001"
+protocol_version: "0.4.0-candidate"
+
+source_trace:
+type: "yaml_hierarchy_failure"
+summary: "Forgetting rule example failed because nested YAML fields leaked to the root level and parent keys were parsed as null."
+source_ref: "github-actions-validation-log"
+source_rumination_record: "srr-2026-06-18-001"
+
+preserved:
+- "failure_pattern"
+- "root_cause"
+- "confirmed_correction"
+- "recurrence_prevention_rule"
+- "validation_boundary"
+- "schema_requirement"
+- "example_structure"
+
+transformed_into:
+- "recurrence_rule"
+- "validation_gate"
+- "memory_weight_record"
+- "forgetting_rule"
+- "memory_retention_decision"
+- "implicit_behavioral_influence"
+
+released:
+- "full_traceback"
+- "duplicate_error_messages"
+- "temporary_debug_notes"
+- "resolved_intermediate_context"
+- "redundant_log_lines"
+- "temporary_troubleshooting_chatter"
+
+compaction_result:
+destination_layer: "long_term_memory"
+active_context_reduction: "high"
+recurrence_prevention_value: "high"
+recommended_memory_weight: "high"
+recommended_action: "convert_to_recurrence_rule"
+review_cycle: "release_cycle"
+
+human_review:
+required: false
+default_action: "pause_and_return_to_human"
+
+notes:
+- "This example shows how a raw validation failure trace is compacted into reusable prevention structure."
+- "The useful structure is preserved while redundant troubleshooting noise is released."
+- "This record connects structural rumination with memory weighting, executable forgetting, and retention decisions."
