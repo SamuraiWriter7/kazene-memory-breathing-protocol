@@ -2,7 +2,7 @@
 
 ## AI Memory Metabolism for Weighted Memory, Forgetting, Trace Compaction, and Implicit Breathing Layers
 
-**Version:** v0.1.0-candidate
+**Version:** v0.2.0-candidate
 **Status:** Candidate
 **Repository:** `kazene-memory-breathing-protocol`
 
@@ -19,13 +19,12 @@ It defines how AI systems should decide:
 * what to compress,
 * what to archive,
 * what to transform into reusable rules,
-* and what to flow into implicit behavioral layers.
+* what to move into implicit behavioral layers,
+* and what to return to human review.
 
 The goal is not to make AI remember everything.
 
 The goal is to make AI remember less, but better.
-
-This protocol shifts AI memory from an accumulation model to a breathing model.
 
 ```text
 From accumulation to circulation.
@@ -53,7 +52,8 @@ Kazene Memory Breathing Protocol introduces:
 
 * four-layer memory breathing,
 * memory weighting,
-* forgetting rules,
+* executable forgetting rules,
+* memory retention decisions,
 * trace compaction,
 * implicit behavioral influence,
 * and human review boundaries.
@@ -168,60 +168,187 @@ Examples:
 
 ---
 
-## v0.1.0-candidate Scope
+## Executable Forgetting Rules
 
-Version `v0.1.0-candidate` defines the first working core of the protocol.
+`v0.2.0-candidate` adds **Executable Forgetting Rules**.
 
-It includes:
+Forgetting is not treated as simple deletion.
 
-* `docs/kazene-memory-breathing-protocol.md`
-* `schemas/memory-breathing-record.schema.json`
-* `examples/memory-breathing-record.example.yaml`
-* `scripts/validate_examples.py`
-* `.github/workflows/validate-examples.yml`
+In this protocol, forgetting may mean:
 
-This version focuses on the minimum viable memory breathing record.
+* forget,
+* compress,
+* archive,
+* downgrade weight,
+* promote to long-term memory,
+* move to implicit breathing layer,
+* convert to recurrence rule,
+* or return to human review.
+
+This makes forgetting auditable, structured, and executable.
+
+```text
+Forgetting is not disappearance.
+Forgetting is transformation.
+```
 
 ---
 
-## Schema
+## Memory Retention Decision
 
-The initial schema is:
+`v0.2.0-candidate` also introduces **Memory Retention Decision** records.
+
+A memory retention decision records the outcome of applying an executable forgetting rule.
+
+It documents:
+
+* what memory was evaluated,
+* which forgetting rule was applied,
+* what action was taken,
+* what was preserved,
+* what was released,
+* what record or structure was created,
+* and whether human review was required.
+
+This allows AI memory metabolism to become traceable instead of invisible.
+
+---
+
+## Trace Compaction
+
+Trace Compaction transforms raw logs into reusable structure.
+
+Example:
+
+```text
+raw validation failure
+  → recurrence rule
+  → validation gate
+  → safety boundary
+```
+
+The goal is not to preserve every log line.
+
+The goal is to preserve future prevention value while reducing active memory load.
+
+---
+
+## Human Review Boundary
+
+Some memory decisions must not be automated.
+
+Human review is required when memory affects:
+
+* high-impact action,
+* value judgment,
+* irreversible decisions,
+* safety boundary changes,
+* legal judgment,
+* political or military interpretation,
+* authorship attribution,
+* value allocation,
+* identity-sensitive decisions,
+* financial consequences,
+* or external system actions.
+
+Memory may guide.
+
+It must not become unchecked authority.
+
+---
+
+## Current Version Scope
+
+### v0.1.0-candidate — Four-Layer Memory Breathing Core
+
+`v0.1.0-candidate` defined the first working core of the protocol:
+
+* four-layer memory model,
+* forgetting policy,
+* trace compaction,
+* implicit breathing layer,
+* human review boundary,
+* JSON Schema validation,
+* YAML example validation,
+* GitHub Actions validation.
+
+### v0.2.0-candidate — Executable Forgetting Rules
+
+`v0.2.0-candidate` adds executable memory metabolism:
+
+* forgetting rule schema,
+* memory retention decision schema,
+* example forgetting rule,
+* example retention decision,
+* validation integration,
+* documentation for executable forgetting.
+
+---
+
+## Repository Structure
+
+```text
+docs/
+  kazene-memory-breathing-protocol.md
+  executable-forgetting-rules.md
+
+schemas/
+  memory-breathing-record.schema.json
+  forgetting-rule.schema.json
+  memory-retention-decision.schema.json
+
+examples/
+  memory-breathing-record.example.yaml
+  forgetting-rule.example.yaml
+  memory-retention-decision.example.yaml
+
+scripts/
+  validate_examples.py
+
+.github/
+  workflows/
+    validate-examples.yml
+```
+
+---
+
+## Schemas
+
+Current schemas:
 
 ```text
 schemas/memory-breathing-record.schema.json
+schemas/forgetting-rule.schema.json
+schemas/memory-retention-decision.schema.json
 ```
 
-It defines:
+These define:
 
-* `memory_breathing_record`
-* four-layer memory structure,
-* forgetting policy,
-* trace compaction,
-* human review boundary,
-* optional notes.
+* memory breathing records,
+* executable forgetting rules,
+* memory retention decisions,
+* memory layers,
+* forgetting actions,
+* trace compaction outcomes,
+* and human review boundaries.
 
 ---
 
-## Example
+## Examples
 
-The initial example is:
+Current examples:
 
 ```text
 examples/memory-breathing-record.example.yaml
+examples/forgetting-rule.example.yaml
+examples/memory-retention-decision.example.yaml
 ```
 
-It demonstrates a memory breathing record for a GitHub specification workflow.
+These demonstrate:
 
-The example includes:
-
-* short-term memory,
-* working memory,
-* long-term memory,
-* implicit breathing layer,
-* forgetting policy,
-* trace compaction,
-* human review boundary.
+* a four-layer memory breathing record,
+* a forgetting rule that converts resolved validation failure into a recurrence rule,
+* and a memory retention decision that preserves useful prevention patterns while releasing unnecessary raw logs.
 
 ---
 
@@ -233,6 +360,12 @@ Run:
 
 ```bash
 python scripts/validate_examples.py
+```
+
+Recommended syntax check:
+
+```bash
+python -m py_compile scripts/validate_examples.py
 ```
 
 Required Python packages:
@@ -333,54 +466,46 @@ less memory noise
 
 ## Future Roadmap
 
-### v0.2 — Executable Forgetting Rules
+### v0.3 — Memory Weight Architecture Integration
 
 Planned direction:
 
-* formal forgetting rule schema,
-* retention lifecycle checks,
-* stale context detection,
-* compression and release actions.
+* formal memory weight records,
+* retention priority,
+* review cycles,
+* memory promotion and downgrade logic,
+* integration with existing Memory Weight Architecture.
 
-### v0.3 — Trace Layer Integration
-
-Planned direction:
-
-* durable origin traces,
-* contribution-preserving memory,
-* value-sensitive retention rules,
-* trace compaction records.
-
-### v0.4 — Mythos Tuning Integration
+### v0.4 — Structural Rumination / Trace Compaction Integration
 
 Planned direction:
 
-* memory breathing for large-scale AI orchestration,
-* model routing based on memory weight,
-* implicit behavior tuning records.
+* recurrence rule linkage,
+* rumination record integration,
+* failure-to-rule transformation,
+* validation gate records.
 
-### v0.5 — Multi-Agent Memory Circulation
+### v0.5 — Multi-Wing Memory Wing Integration
 
 Planned direction:
 
 * distributed memory breathing,
 * shared memory boundaries,
 * agent-to-agent trace compaction,
-* cross-agent forgetting governance.
+* cross-agent forgetting governance,
+* Multi-Wing Memory Wing definition.
 
 ---
 
 ## Current Status
 
-`v0.1.0-candidate` establishes the Four-Layer Memory Breathing Core.
-
-It is the first candidate release of Kazene Memory Breathing Protocol.
+`v0.2.0-candidate` establishes executable forgetting as a working extension of the Four-Layer Memory Breathing Core.
 
 The protocol now has:
 
 * documentation,
-* a JSON Schema,
-* a YAML example,
+* three JSON Schemas,
+* three YAML examples,
 * a validation script,
 * and GitHub Actions validation.
 
@@ -395,8 +520,10 @@ Kazene Memory Breathing Protocol helps AI systems:
 * compress traces,
 * preserve important patterns,
 * reduce cognitive and computational load,
+* convert failures into reusable prevention structures,
 * and keep high-impact decisions within human review boundaries.
 
 The goal is not to build an AI that remembers everything.
 
-The goal is to build an AI that breathes.
+The goal is to build an AI that breathes, forgets, and metabolizes memory safely.
+
